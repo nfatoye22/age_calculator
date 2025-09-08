@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Celebrity Age Explorer - Discover Ages of 10,000+ Celebrities | Age Calculator Pro</title>
+    <meta name="description" content="Explore ages of over 10,000 celebrities, historical figures, and public personalities. Real-time age updates, celebrity twins, age comparisons, and interactive games." />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fagecalcul4275back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
+</head>
+<body class="bg-background min-h-screen">
+    <!-- Navigation Header -->
+    <nav class="bg-surface border-b border-border-light sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <svg class="h-8 w-8 text-primary" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 8v16M20 8v16M8 16h16" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="ml-3">
+                        <h1 class="text-xl font-bold text-primary">Age Calculator Pro</h1>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="homepage_interactive_calculator_hub.html" class="text-text-secondary hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">Calculator Hub</a>
+                        <a href="celebrity_age_explorer.html" class="bg-primary-50 text-primary px-3 py-2 rounded-md text-sm font-medium">Celebrity Ages</a>
+                        <a href="calculator_suite_advanced_tools.html" class="text-text-secondary hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">Advanced Tools</a>
+                        <a href="personal_dashboard_milestone_tracker.html" class="text-text-secondary hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">Dashboard</a>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button type="button" class="text-text-secondary hover:text-primary p-2" onclick="toggleMobileMenu()">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="md:hidden hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-surface border-t border-border-light">
+                <a href="homepage_interactive_calculator_hub.html" class="text-text-secondary hover:text-primary block px-3 py-2 rounded-md text-base font-medium">Calculator Hub</a>
+                <a href="celebrity_age_explorer.html" class="bg-primary-50 text-primary block px-3 py-2 rounded-md text-base font-medium">Celebrity Ages</a>
+                <a href="calculator_suite_advanced_tools.html" class="text-text-secondary hover:text-primary block px-3 py-2 rounded-md text-base font-medium">Advanced Tools</a>
+                <a href="personal_dashboard_milestone_tracker.html" class="text-text-secondary hover:text-primary block px-3 py-2 rounded-md text-base font-medium">Dashboard</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Search -->
+    <section class="py-12 lg:py-16 bg-gradient-to-br from-primary-50 to-accent-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl lg:text-5xl font-bold text-gradient-primary mb-6">
+                    Celebrity Age Explorer
+                </h1>
+                <p class="text-xl text-text-secondary max-w-3xl mx-auto mb-8">
+                    Discover current ages of over 10,000+ celebrities, historical figures, and public personalities with real-time precision.
+                </p>
+                
+                <!-- Search Bar with Autocomplete -->
+                <div class="max-w-2xl mx-auto relative">
+                    <div class="relative">
+                        <input type="text" id="celebrity-search" class="input-field pl-12 pr-16 py-4 text-lg" placeholder="Search celebrities, actors, musicians, athletes..." autocomplete="off" oninput="handleSearch(this.value)" />
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                            <svg class="h-6 w-6 text-text-tertiary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            </svg>
+                        </div>
+                        <button class="absolute inset-y-0 right-0 pr-4 flex items-center" onclick="clearSearch()">
+                            <svg class="h-5 w-5 text-text-tertiary hover:text-text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <!-- Search Suggestions Dropdown -->
+                    <div id="search-suggestions" class="absolute top-full left-0 right-0 bg-surface border border-border rounded-lg shadow-lg mt-2 hidden z-10 max-h-64 overflow-y-auto">
+                        <!-- Suggestions will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Quick Search Tags -->
+                <div class="flex flex-wrap justify-center gap-2 mt-6">
+                    <button class="px-4 py-2 bg-surface border border-border rounded-full text-sm text-text-secondary hover:text-primary hover:border-primary transition-colors" onclick="quickSearch('actors')">Actors</button>
+                    <button class="px-4 py-2 bg-surface border border-border rounded-full text-sm text-text-secondary hover:text-primary hover:border-primary transition-colors" onclick="quickSearch('musicians')">Musicians</button>
+                    <button class="px-4 py-2 bg-surface border border-border rounded-full text-sm text-text-secondary hover:text-primary hover:border-primary transition-colors" onclick="quickSearch('athletes')">Athletes</button>
+                    <button class="px-4 py-2 bg-surface border border-border rounded-full text-sm text-text-secondary hover:text-primary hover:border-primary transition-colors" onclick="quickSearch('politicians')">Politicians</button>
+                    <button class="px-4 py-2 bg-surface border border-border rounded-full text-sm text-text-secondary hover:text-primary hover:border-primary transition-colors" onclick="quickSearch('trending')">Trending</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="py-8 bg-surface border-b border-border-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap items-center justify-between gap-4">
+                <!-- Filter Toggle -->
+                <div class="flex items-center">
+                    <button class="flex items-center space-x-2 px-4 py-2 bg-primary-50 text-primary rounded-lg hover:bg-primary-100 transition-colors" onclick="toggleFilters()">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/>
+                        </svg>
+                        <span>Filters</span>
+                    </button>
+                    <span class="ml-4 text-sm text-text-secondary" id="results-count">Showing 10,247 celebrities</span>
+                </div>
+
+                <!-- View Toggle -->
+                <div class="flex items-center space-x-2">
+                    <span class="text-sm text-text-secondary">View:</span>
+                    <button class="p-2 bg-primary text-white rounded-md" onclick="setView('grid')" id="grid-view">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
+                        </svg>
+                    </button>
+                    <button class="p-2 bg-surface border border-border rounded-md hover:bg-surface-50" onclick="setView('list')" id="list-view">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Advanced Filters Panel -->
+            <div id="filters-panel" class="mt-6 hidden">
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Age Range Filter -->
+                    <div>
+                        <label class="block text-sm font-medium text-text-primary mb-2">Age Range</label>
+                        <div class="space-y-2">
+                            <input type="range" id="age-min" min="0" max="100" value="0" class="w-full" oninput="updateAgeFilter()" />
+                            <input type="range" id="age-max" min="0" max="100" value="100" class="w-full" oninput="updateAgeFilter()" />
+                            <div class="flex justify-between text-xs text-text-secondary">
+                                <span id="age-min-label">0 years</span>
+                                <span id="age-max-label">100+ years</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Profession Filter -->
+                    <div>
+                        <label class="block text-sm font-medium text-text-primary mb-2">Profession</label>
+                        <select class="input-field" onchange="filterByProfession(this.value)">
+                            <option value>All Professions</option>
+                            <option value="actor">Actors</option>
+                            <option value="musician">Musicians</option>
+                            <option value="athlete">Athletes</option>
+                            <option value="politician">Politicians</option>
+                            <option value="director">Directors</option>
+                            <option value="author">Authors</option>
+                            <option value="scientist">Scientists</option>
+                        </select>
+                    </div>
+
+                    <!-- Birth Decade Filter -->
+                    <div>
+                        <label class="block text-sm font-medium text-text-primary mb-2">Birth Decade</label>
+                        <select class="input-field" onchange="filterByDecade(this.value)">
+                            <option value>All Decades</option>
+                            <option value="2000s">2000s</option>
+                            <option value="1990s">1990s</option>
+                            <option value="1980s">1980s</option>
+                            <option value="1970s">1970s</option>
+                            <option value="1960s">1960s</option>
+                            <option value="1950s">1950s</option>
+                            <option value="1940s">1940s & Earlier</option>
+                        </select>
+                    </div>
+
+                    <!-- Zodiac Sign Filter -->
+                    <div>
+                        <label class="block text-sm font-medium text-text-primary mb-2">Zodiac Sign</label>
+                        <select class="input-field" onchange="filterByZodiac(this.value)">
+                            <option value>All Signs</option>
+                            <option value="aries">♈ Aries</option>
+                            <option value="taurus">♉ Taurus</option>
+                            <option value="gemini">♊ Gemini</option>
+                            <option value="cancer">♋ Cancer</option>
+                            <option value="leo">♌ Leo</option>
+                            <option value="virgo">♍ Virgo</option>
+                            <option value="libra">♎ Libra</option>
+                            <option value="scorpio">♏ Scorpio</option>
+                            <option value="sagittarius">♐ Sagittarius</option>
+                            <option value="capricorn">♑ Capricorn</option>
+                            <option value="aquarius">♒ Aquarius</option>
+                            <option value="pisces">♓ Pisces</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Clear Filters -->
+                <div class="mt-4 flex justify-end">
+                    <button class="px-4 py-2 text-text-secondary hover:text-primary transition-colors" onclick="clearAllFilters()">
+                        Clear All Filters
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Features Section -->
+    <section class="py-8 bg-surface-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Celebrity Twins -->
+                <div class="card p-6 text-center card-hover cursor-pointer" onclick="showCelebrityTwins()">
+                    <div class="w-16 h-16 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-text-primary mb-2">Celebrity Twins</h3>
+                    <p class="text-text-secondary text-sm">Discover celebrities born on the same day with identical ages</p>
+                </div>
+
+                <!-- Age Comparisons -->
+                <div class="card p-6 text-center card-hover cursor-pointer" onclick="showAgeComparisons()">
+                    <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-text-primary mb-2">Age Comparisons</h3>
+                    <p class="text-text-secondary text-sm">Compare ages of multiple celebrities side-by-side</p>
+                </div>
+
+                <!-- Guess the Age Game -->
+                <div class="card p-6 text-center card-hover cursor-pointer" onclick="startGuessGame()">
+                    <div class="w-16 h-16 bg-success-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-text-primary mb-2">Guess the Age</h3>
+                    <p class="text-text-secondary text-sm">Test your knowledge with our interactive age guessing game</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Celebrity Grid/List -->
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Grid View -->
+            <div id="celebrity-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Celebrity Card 1 -->
+                <div class="card card-hover p-6 cursor-pointer" onclick="showCelebrityDetails('taylor-swift')">
+                    <div class="text-center">
+                        <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=300&auto=format&fit=crop&ixlib=rb-4.0.3" alt="Taylor Swift" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover" onerror="this.src='https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=300'; this.onerror=null;" />
+                        <h3 class="text-lg font-semibold text-text-primary mb-2">Taylor Swift</h3>
+                        <div class="text-2xl font-bold text-primary mb-2">35 years old</div>
+                        <div class="text-sm text-text-secondary mb-3">Born: Dec 13, 1989</div>
+                        <div class="flex items-center justify-center space-x-2 mb-3">
+                            <span class="text-xs bg-accent-100 text-accent px-2 py-1 rounded-full">♐ Sagittarius</span>
+                            <span class="text-xs bg-primary-100 text-primary px-2 py-1 rounded-full">Musician</span>
+                        </div>
+                        <div class="text-xs text-success font-medium">Next birthday in 96 days</div>
+                    </div>
+                </div>
+
+                <!-- Celebrity Card 2 -->
+                <div class="card card-hover p-6 cursor-pointer" onclick="showCelebrityDetails('leonardo-dicaprio')">
+                    <div class="text-center">
+                        <img src="https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Leonardo DiCaprio" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover" onerror="this.src='https://images.pixabay.com/photo-2016/11/21/12/42/beard-1845166_960_720.jpg'; this.onerror=null;" />
+                        <h3 class="text-lg font-semibold text-text-primary mb-2">Leonardo DiCaprio</h3>
+                        <div class="text-2xl font-bold text-primary mb-2">49 years old</div>
+                        <div class="text-sm text-text-secondary mb-3">Born: Nov 11, 1974</div>
+                        <div class="flex items-center justify-center space-x-2 mb-3">
+                            <span class="text-xs bg-accent-100 text-accent px-2 py-1 rounded-full">♏ Scorpio</span>
+                            <span class="text-xs bg-primary-100 text-primary px-2 py-1 rounded-full">Actor</span>
+                        </div>
+                        <div class="text-xs text-success font-medium">Next birthday in 64 days</div>
+                    </div>
+                </div>
+
+                <!-- Celebrity Card 3 -->
+                <div class="card card-hover p-6 cursor-pointer" onclick="showCelebrityDetails('emma-stone')">
+                    <div class="text-center">
+                        <img src="https://images.pixabay.com/photo-2017/07/18/15/39/girl-2516967_960_720.jpg" alt="Emma Stone" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover" onerror="this.src='https://images.unsplash.com/photo-1494790108755-2616c0763c5e?q=80&w=300&auto=format&fit=crop'; this.onerror=null;" />
+                        <h3 class="text-lg font-semibold text-text-primary mb-2">Emma Stone</h3>
+                        <div class="text-2xl font-bold text-primary mb-2">35 years old</div>
+                        <div class="text-sm text-text-secondary mb-3">Born: Nov 6, 1988</div>
+                        <div class="flex items-center justify-center space-x-2 mb-3">
+                            <span class="text-xs bg-accent-100 text-accent px-2 py-1 rounded-full">♏ Scorpio</span>
+                            <span class="text-xs bg-primary-100 text-primary px-2 py-1 rounded-full">Actor</span>
+                        </div>
+                        <div class="text-xs text-success font-medium">Next birthday in 59 days</div>
+                    </div>
+                </div>
+
+                <!-- Celebrity Card 4 -->
+                <div class="card card-hover p-6 cursor-pointer" onclick="showCelebrityDetails('ryan-gosling')">
+                    <div class="text-center">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=300&auto=format&fit=crop&ixlib=rb-4.0.3" alt="Ryan Gosling" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover" onerror="this.src='https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=300'; this.onerror=null;" />
+                        <h3 class="text-lg font-semibold text-text-primary mb-2">Ryan Gosling</h3>
+                        <div class="text-2xl font-bold text-primary mb-2">43 years old</div>
+                        <div class="text-sm text-text-secondary mb-3">Born: Nov 12, 1980</div>
+                        <div class="flex items-center justify-center space-x-2 mb-3">
+                            <span class="text-xs bg-accent-100 text-accent px-2 py-1 rounded-full">♏ Scorpio</span>
+                            <span class="text-xs bg-primary-100 text-primary px-2 py-1 rounded-full">Actor</span>
+                        </div>
+                        <div class="text-xs text-success font-medium">Next birthday in 65 days</div>
+                    </div>
+                </div>
+
+                <!-- Celebrity Card 5 -->
+                <div class="card card-hover p-6 cursor-pointer" onclick="showCelebrityDetails('margot-robbie')">
+                    <div class="text-center">
+                        <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Margot Robbie" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover" onerror="this.src='https://images.pixabay.com/photo-2016/03/23/04/01/woman-1274056_960_720.jpg'; this.onerror=null;" />
+                        <h3 class="text-lg font-semibold text-text-primary mb-2">Margot Robbie</h3>
+                        <div class="text-2xl font-bold text-primary mb-2">34 years old</div>
+                        <div class="text-sm text-text-secondary mb-3">Born: Jul 2, 1990</div>
+                        <div class="flex items-center justify-center space-x-2 mb-3">
+                            <span class="text-xs bg-accent-100 text-accent px-2 py-1 rounded-full">♋ Cancer</span>
+                            <span class="text-xs bg-primary-100 text-primary px-2 py-1 rounded-full">Actor</span>
+                        </div>
+                        <div class="text-xs text-success font-medium">Next birthday in 297 days</div>
+                    </div>
+                </div>
+
+                <!-- Celebrity Card 6 -->
+                <div class="card card-hover p-6 cursor-pointer" onclick="showCelebrityDetails('dwayne-johnson')">
+                    <div class="text-center">
+                        <img src="https://images.unsplash.com/photo-1566492031773-4f4e44671d66?q=80&w=300&auto=format&fit=crop&ixlib=rb-4.0.3" alt="Dwayne Johnson" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover" onerror="this.src='https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=300'; this.onerror=null;" />
+                        <h3 class="text-lg font-semibold text-text-primary mb-2">Dwayne Johnson</h3>
+                        <div class="text-2xl font-bold text-primary mb-2">52 years old</div>
+                        <div class="text-sm text-text-secondary mb-3">Born: May 2, 1972</div>
+                        <div class="flex items-center justify-center space-x-2 mb-3">
+                            <span class="text-xs bg-accent-100 text-accent px-2 py-1 rounded-full">♉ Taurus</span>
+                            <span class="text-xs bg-primary-100 text-primary px-2 py-1 rounded-full">Actor</span>
+                        </div>
+                        <div class="text-xs text-success font-medium">Next birthday in 236 days</div>
+                    </div>
+                </div>
+
+                <!-- Celebrity Card 7 -->
+                <div class="card card-hover p-6 cursor-pointer" onclick="showCelebrityDetails('ariana-grande')">
+                    <div class="text-center">
+                        <img src="https://images.pixabay.com/photo-2016/03/23/04/01/woman-1274056_960_720.jpg" alt="Ariana Grande" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover" onerror="this.src='https://images.unsplash.com/photo-1494790108755-2616c0763c5e?q=80&w=300&auto=format&fit=crop'; this.onerror=null;" />
+                        <h3 class="text-lg font-semibold text-text-primary mb-2">Ariana Grande</h3>
+                        <div class="text-2xl font-bold text-primary mb-2">31 years old</div>
+                        <div class="text-sm text-text-secondary mb-3">Born: Jun 26, 1993</div>
+                        <div class="flex items-center justify-center space-x-2 mb-3">
+                            <span class="text-xs bg-accent-100 text-accent px-2 py-1 rounded-full">♋ Cancer</span>
+                            <span class="text-xs bg-primary-100 text-primary px-2 py-1 rounded-full">Musician</span>
+                        </div>
+                        <div class="text-xs text-success font-medium">Next birthday in 291 days</div>
+                    </div>
+                </div>
+
+                <!-- Celebrity Card 8 -->
+                <div class="card card-hover p-6 cursor-pointer" onclick="showCelebrityDetails('tom-hanks')">
+                    <div class="text-center">
+                        <img src="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Tom Hanks" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover" onerror="this.src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=300&auto=format&fit=crop'; this.onerror=null;" />
+                        <h3 class="text-lg font-semibold text-text-primary mb-2">Tom Hanks</h3>
+                        <div class="text-2xl font-bold text-primary mb-2">68 years old</div>
+                        <div class="text-sm text-text-secondary mb-3">Born: Jul 9, 1956</div>
+                        <div class="flex items-center justify-center space-x-2 mb-3">
+                            <span class="text-xs bg-accent-100 text-accent px-2 py-1 rounded-full">♋ Cancer</span>
+                            <span class="text-xs bg-primary-100 text-primary px-2 py-1 rounded-full">Actor</span>
+                        </div>
+                        <div class="text-xs text-success font-medium">Next birthday in 304 days</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Load More Button -->
+            <div class="text-center mt-12">
+                <button class="btn-primary" onclick="loadMoreCelebrities()">
+                    Load More Celebrities
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Celebrity Detail Modal -->
+    <div id="celebrity-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 hidden z-50">
+        <div class="bg-surface rounded-xl shadow-modal max-w-2xl w-full max-h-screen overflow-y-auto">
+            <div class="p-6">
+                <!-- Modal Header -->
+                <div class="flex justify-between items-start mb-6">
+                    <div class="flex items-center space-x-4">
+                        <img id="modal-celebrity-image" src alt class="w-20 h-20 rounded-full object-cover" />
+                        <div>
+                            <h2 id="modal-celebrity-name" class="text-2xl font-bold text-text-primary">Celebrity Name</h2>
+                            <p id="modal-celebrity-profession" class="text-text-secondary">Profession</p>
+                        </div>
+                    </div>
+                    <button class="text-text-tertiary hover:text-text-secondary" onclick="closeCelebrityModal()">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Age Details -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                    <div class="text-center p-4 bg-primary-50 rounded-lg">
+                        <div class="text-2xl font-bold text-primary" id="modal-years">35</div>
+                        <div class="text-sm text-text-secondary">Years</div>
+                    </div>
+                    <div class="text-center p-4 bg-accent-50 rounded-lg">
+                        <div class="text-2xl font-bold text-accent" id="modal-months">420</div>
+                        <div class="text-sm text-text-secondary">Months</div>
+                    </div>
+                    <div class="text-center p-4 bg-success-50 rounded-lg">
+                        <div class="text-2xl font-bold text-success" id="modal-days">12,775</div>
+                        <div class="text-sm text-text-secondary">Days</div>
+                    </div>
+                    <div class="text-center p-4 bg-secondary-50 rounded-lg">
+                        <div class="text-2xl font-bold text-secondary" id="modal-hours">306,600</div>
+                        <div class="text-sm text-text-secondary">Hours</div>
+                    </div>
+                </div>
+
+                <!-- Additional Info -->
+                <div class="space-y-4 mb-6">
+                    <div class="flex justify-between items-center py-2 border-b border-border-light">
+                        <span class="text-text-secondary">Birth Date</span>
+                        <span id="modal-birth-date" class="font-medium">December 13, 1989</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2 border-b border-border-light">
+                        <span class="text-text-secondary">Zodiac Sign</span>
+                        <span id="modal-zodiac" class="font-medium">♐ Sagittarius</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2 border-b border-border-light">
+                        <span class="text-text-secondary">Next Birthday</span>
+                        <span id="modal-next-birthday" class="font-medium text-success">In 96 days</span>
+                    </div>
+                </div>
+
+                <!-- Share Buttons -->
+                <div class="flex space-x-3">
+                    <button class="btn-primary flex-1" onclick="shareCelebrity('twitter')">
+                        Share on Twitter
+                    </button>
+                    <button class="btn-secondary flex-1" onclick="shareCelebrity('facebook')">
+                        Share on Facebook
+                    </button>
+                    <button class="btn-accent" onclick="copyCelebrityLink()">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-text-primary text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <svg class="h-8 w-8 text-accent" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 8v16M20 8v16M8 16h16" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        <span class="ml-2 text-xl font-bold">Age Calculator Pro</span>
+                    </div>
+                    <p class="text-gray-300 mb-4">Discover ages of over 10,000+ celebrities with precision calculations and real-time updates.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Calculators</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="homepage_interactive_calculator_hub.html" class="hover:text-accent transition-colors">Age Calculator</a></li>
+                        <li><a href="calculator_suite_advanced_tools.html" class="hover:text-accent transition-colors">Advanced Tools</a></li>
+                        <li><a href="javascript:void(0)" class="hover:text-accent transition-colors">Date Calculator</a></li>
+                        <li><a href="javascript:void(0)" class="hover:text-accent transition-colors">Life Expectancy</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Features</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="celebrity_age_explorer.html" class="hover:text-accent transition-colors">Celebrity Ages</a></li>
+                        <li><a href="personal_dashboard_milestone_tracker.html" class="hover:text-accent transition-colors">Milestone Tracker</a></li>
+                        <li><a href="javascript:void(0)" class="hover:text-accent transition-colors">Age Comparisons</a></li>
+                        <li><a href="javascript:void(0)" class="hover:text-accent transition-colors">Statistics</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Support</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="javascript:void(0)" class="hover:text-accent transition-colors">Help Center</a></li>
+                        <li><a href="javascript:void(0)" class="hover:text-accent transition-colors">Privacy Policy</a></li>
+                        <li><a href="javascript:void(0)" class="hover:text-accent transition-colors">Terms of Service</a></li>
+                        <li><a href="javascript:void(0)" class="hover:text-accent transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
+                <p>&copy; 2025 Age Calculator Pro. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Sample celebrity data
+        const celebrities = [
+            {
+                id: 'taylor-swift',
+                name: 'Taylor Swift',
+                birthDate: '1989-12-13',
+                profession: 'Musician',
+                zodiac: 'Sagittarius',
+                image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=300&auto=format&fit=crop&ixlib=rb-4.0.3'
+            },
+            {
+                id: 'leonardo-dicaprio',
+                name: 'Leonardo DiCaprio',
+                birthDate: '1974-11-11',
+                profession: 'Actor',
+                zodiac: 'Scorpio',
+                image: 'https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=300'
+            },
+            // Add more celebrities as needed
+        ];
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Search functionality
+        function handleSearch(query) {
+            if (query.length < 2) {
+                document.getElementById('search-suggestions').classList.add('hidden');
+                return;
+            }
+
+            // Mock search suggestions
+            const suggestions = [
+                'Taylor Swift', 'Leonardo DiCaprio', 'Emma Stone', 'Ryan Gosling',
+                'Margot Robbie', 'Dwayne Johnson', 'Ariana Grande', 'Tom Hanks'
+            ].filter(name => name.toLowerCase().includes(query.toLowerCase()));
+
+            displaySearchSuggestions(suggestions);
+        }
+
+        function displaySearchSuggestions(suggestions) {
+            const suggestionsDiv = document.getElementById('search-suggestions');
+            
+            if (suggestions.length === 0) {
+                suggestionsDiv.classList.add('hidden');
+                return;
+            }
+
+            suggestionsDiv.innerHTML = suggestions.map(suggestion => 
+                `<div class="px-4 py-2 hover:bg-surface-50 cursor-pointer" onclick="selectSuggestion('${suggestion}')">${suggestion}</div>`
+            ).join('');
+            
+            suggestionsDiv.classList.remove('hidden');
+        }
+
+        function selectSuggestion(name) {
+            document.getElementById('celebrity-search').value = name;
+            document.getElementById('search-suggestions').classList.add('hidden');
+            // Perform search
+            searchCelebrity(name);
+        }
+
+        function clearSearch() {
+            document.getElementById('celebrity-search').value = '';
+            document.getElementById('search-suggestions').classList.add('hidden');
+        }
+
+        function quickSearch(category) {
+            // Filter celebrities by category
+            console.log('Quick search for:', category);
+        }
+
+        // Filter functionality
+        function toggleFilters() {
+            const filtersPanel = document.getElementById('filters-panel');
+            filtersPanel.classList.toggle('hidden');
+        }
+
+        function updateAgeFilter() {
+            const minAge = document.getElementById('age-min').value;
+            const maxAge = document.getElementById('age-max').value;
+            
+            document.getElementById('age-min-label').textContent = `${minAge} years`;
+            document.getElementById('age-max-label').textContent = maxAge == 100 ? '100+ years' : `${maxAge} years`;
+        }
+
+        function filterByProfession(profession) {
+            console.log('Filter by profession:', profession);
+        }
+
+        function filterByDecade(decade) {
+            console.log('Filter by decade:', decade);
+        }
+
+        function filterByZodiac(zodiac) {
+            console.log('Filter by zodiac:', zodiac);
+        }
+
+        function clearAllFilters() {
+            // Reset all filter inputs
+            document.getElementById('age-min').value = 0;
+            document.getElementById('age-max').value = 100;
+            document.querySelectorAll('select').forEach(select => select.value = '');
+            updateAgeFilter();
+        }
+
+        // View toggle
+        function setView(viewType) {
+            const gridView = document.getElementById('grid-view');
+            const listView = document.getElementById('list-view');
+            
+            if (viewType === 'grid') {
+                gridView.classList.add('bg-primary', 'text-white');
+                gridView.classList.remove('bg-surface', 'border', 'border-border');
+                listView.classList.remove('bg-primary', 'text-white');
+                listView.classList.add('bg-surface', 'border', 'border-border');
+            } else {
+                listView.classList.add('bg-primary', 'text-white');
+                listView.classList.remove('bg-surface', 'border', 'border-border');
+                gridView.classList.remove('bg-primary', 'text-white');
+                gridView.classList.add('bg-surface', 'border', 'border-border');
+            }
+        }
+
+        // Special features
+        function showCelebrityTwins() {
+            alert('Celebrity Twins feature - showing celebrities born on the same day!');
+        }
+
+        function showAgeComparisons() {
+            alert('Age Comparisons feature - compare multiple celebrities side-by-side!');
+        }
+
+        function startGuessGame() {
+            alert('Guess the Age game starting - test your celebrity age knowledge!');
+        }
+
+        // Celebrity details
+        function showCelebrityDetails(celebrityId) {
+            // Mock celebrity data for demonstration
+            const celebrityData = {
+                'taylor-swift': {
+                    name: 'Taylor Swift',
+                    profession: 'Musician',
+                    birthDate: 'December 13, 1989',
+                    zodiac: '♐ Sagittarius',
+                    age: { years: 35, months: 420, days: 12775, hours: 306600 },
+                    nextBirthday: 'In 96 days',
+                    image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=300&auto=format&fit=crop&ixlib=rb-4.0.3'
+                }
+            };
+
+            const celebrity = celebrityData[celebrityId] || celebrityData['taylor-swift'];
+            
+            // Populate modal
+            document.getElementById('modal-celebrity-name').textContent = celebrity.name;
+            document.getElementById('modal-celebrity-profession').textContent = celebrity.profession;
+            document.getElementById('modal-celebrity-image').src = celebrity.image;
+            document.getElementById('modal-birth-date').textContent = celebrity.birthDate;
+            document.getElementById('modal-zodiac').textContent = celebrity.zodiac;
+            document.getElementById('modal-next-birthday').textContent = celebrity.nextBirthday;
+            document.getElementById('modal-years').textContent = celebrity.age.years;
+            document.getElementById('modal-months').textContent = celebrity.age.months.toLocaleString();
+            document.getElementById('modal-days').textContent = celebrity.age.days.toLocaleString();
+            document.getElementById('modal-hours').textContent = celebrity.age.hours.toLocaleString();
+            
+            // Show modal
+            document.getElementById('celebrity-modal').classList.remove('hidden');
+        }
+
+        function closeCelebrityModal() {
+            document.getElementById('celebrity-modal').classList.add('hidden');
+        }
+
+        function shareCelebrity(platform) {
+            const celebrityName = document.getElementById('modal-celebrity-name').textContent;
+            const message = `Check out ${celebrityName}'s current age on Age Calculator Pro!`;
+            
+            if (platform === 'twitter') {
+                window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(message)}`, '_blank');
+            } else if (platform === 'facebook') {
+                window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`, '_blank');
+            }
+        }
+
+        function copyCelebrityLink() {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                alert('Link copied to clipboard!');
+            });
+        }
+
+        function loadMoreCelebrities() {
+            // Mock function to load more celebrities
+            alert('Loading more celebrities...');
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Close search suggestions when clicking outside
+            document.addEventListener('click', function(event) {
+                const searchContainer = document.querySelector('.relative');
+                if (!searchContainer.contains(event.target)) {
+                    document.getElementById('search-suggestions').classList.add('hidden');
+                }
+            });
+
+            // Close modal when clicking outside
+            document.getElementById('celebrity-modal').addEventListener('click', function(event) {
+                if (event.target === this) {
+                    closeCelebrityModal();
+                }
+            });
+
+            // Initialize age filter labels
+            updateAgeFilter();
+        });
+    </script>
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+</html>

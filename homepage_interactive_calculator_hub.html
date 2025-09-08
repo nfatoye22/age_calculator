@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Age Calculator Pro - Precision Age Calculations & Celebrity Ages</title>
+    <meta name="description" content="The most accurate age calculator with celebrity age comparisons, milestone tracking, and advanced calculation tools. Calculate ages instantly with precision." />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Google AdSense Integration -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1234567890123456" crossorigin="anonymous"></script>
+    <meta name="google-adsense-account" content="ca-pub-1234567890123456" />
+
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fagecalcul4275back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
+</head>
+<body class="bg-background min-h-screen">
+    <!-- Navigation Header -->
+    <nav class="bg-surface border-b border-border-light sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <svg class="h-8 w-8 text-primary" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 8v16M20 8v16M8 16h16" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="ml-3">
+                        <h1 class="text-xl font-bold text-primary">Age Calculator Pro</h1>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="homepage_interactive_calculator_hub.html" class="bg-primary-50 text-primary px-3 py-2 rounded-md text-sm font-medium">Calculator Hub</a>
+                        <a href="celebrity_age_explorer.html" class="text-text-secondary hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">Celebrity Ages</a>
+                        <a href="calculator_suite_advanced_tools.html" class="text-text-secondary hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">Advanced Tools</a>
+                        <a href="personal_dashboard_milestone_tracker.html" class="text-text-secondary hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">Dashboard</a>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button type="button" class="text-text-secondary hover:text-primary p-2" onclick="toggleMobileMenu()">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="md:hidden hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-surface border-t border-border-light">
+                <a href="homepage_interactive_calculator_hub.html" class="bg-primary-50 text-primary block px-3 py-2 rounded-md text-base font-medium">Calculator Hub</a>
+                <a href="celebrity_age_explorer.html" class="text-text-secondary hover:text-primary block px-3 py-2 rounded-md text-base font-medium">Celebrity Ages</a>
+                <a href="calculator_suite_advanced_tools.html" class="text-text-secondary hover:text-primary block px-3 py-2 rounded-md text-base font-medium">Advanced Tools</a>
+                <a href="personal_dashboard_milestone_tracker.html" class="text-text-secondary hover:text-primary block px-3 py-2 rounded-md text-base font-medium">Dashboard</a>
+            </div>
+        </div>
+    </nav>
+
+<!-- Header Advertisement Banner -->
+<div class="ad-container ad-banner bg-gradient-to-r from-blue-50 to-purple-50 border border-gray-200">
+    <div class="ad-placeholder">
+        <ins class="adsbygoogle block" style="display:block" data-ad-client="ca-pub-1234567890123456" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>
+    // Mobile menu toggle
+    function toggleMobileMenu() {
+        const menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('hidden');
+    }
+
+    // Age calculation function
+    function calculateAge(event) {
+        event.preventDefault();
+        
+        const month = document.getElementById('birth-month').value;
+        const day = document.getElementById('birth-day').value;
+        const year = document.getElementById('birth-year').value;
+        
+        if (!month || !day || !year) {
+            alert('Please fill in all fields');
+            return;
+        }
+        
+        const birthDate = new Date(year, month - 1, day);
+        const today = new Date();
+        
+        // Calculate age
+        let age = today.getFullYear() - birthDate.getFullYear();
+        const monthDiff = today.getMonth() - birthDate.getMonth();
+        
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+        
+        // Calculate detailed breakdown
+        const totalDays = Math.floor((today - birthDate) / (1000 * 60 * 60 * 24));
+        const totalMonths = age * 12 + monthDiff;
+        const totalHours = totalDays * 24;
+        
+        // Update display
+        document.getElementById('main-age').textContent = `${age} Years Old`;
+        document.getElementById('years-count').textContent = age.toLocaleString();
+        document.getElementById('months-count').textContent = totalMonths.toLocaleString();
+        document.getElementById('days-count').textContent = totalDays.toLocaleString();
+        document.getElementById('hours-count').textContent = totalHours.toLocaleString();
+        
+        // Show results with animation
+        const resultsDiv = document.getElementById('age-results');
+        resultsDiv.classList.remove('hidden');
+        resultsDiv.classList.add('celebration-animation');
+        
+        // Remove animation class after animation completes
+        setTimeout(() => {
+            resultsDiv.classList.remove('celebration-animation');
+        }, 400);
+    }
+
+    // Tab switching functionality
+    function switchTab(tabName) {
+        // Hide all tab contents
+        const tabContents = document.querySelectorAll('.tab-content');
+        tabContents.forEach(content => content.classList.add('hidden'));
+        
+        // Remove active class from all tab buttons
+        const tabButtons = document.querySelectorAll('.tab-button');
+        tabButtons.forEach(button => {
+            button.classList.remove('active', 'text-primary', 'border-primary', 'border-b-2');
+            button.classList.add('text-text-secondary');
+        });
+        
+        // Show selected tab content
+        document.getElementById(tabName).classList.remove('hidden');
+        
+        // Add active class to clicked tab button
+        event.target.classList.add('active', 'text-primary', 'border-primary', 'border-b-2');
+        event.target.classList.remove('text-text-secondary');
+    }
+
+    // Celebrity carousel scrolling
+    function scrollCarousel(direction) {
+        const carousel = document.getElementById('celebrity-carousel');
+        const scrollAmount = 280; // Width of card + gap
+        
+        if (direction === 'left') {
+            carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        } else {
+            carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        }
+    }
+
+    // Celebrity details function
+    function showCelebrityDetails(celebrityId) {
+        // This would typically open a modal or navigate to celebrity page
+        window.location.href = 'celebrity_age_explorer.html';
+    }
+
+    // AdSense Lazy Loading for Performance
+    const adObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.hasAttribute('data-loaded')) {
+                entry.target.setAttribute('data-loaded', 'true');
+                const adScript = entry.target.querySelector('script:not([async])');
+                if (adScript && !adScript.executed) {
+                    try {
+                        eval(adScript.innerHTML);
+                        adScript.executed = true;
+                    } catch (e) {
+                        console.log('Ad script execution deferred to AdSense');
+                    }
+                }
+            }
+        });
+    }, { threshold: 0.1 });
+
+    // AdSense Refresh Management
+    function refreshAds() {
+        if (window.adsbygoogle && window.adsbygoogle.loaded) {
+            const ads = document.querySelectorAll('.adsbygoogle');
+            ads.forEach(ad => {
+                if (!ad.hasAttribute('data-refreshed')) {
+                    try {
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                        ad.setAttribute('data-refreshed', 'true');
+                    } catch (e) {
+                        console.log('Ad refresh handled by AdSense');
+                    }
+                }
+            });
+        }
+    }
+
+    // Initialize page
+    document.addEventListener('DOMContentLoaded', function() {
+        // Set current date as default for reverse age calculator
+        const today = new Date().toISOString().split('T')[0];
+        const reverseDateInput = document.querySelector('#reverse-age input[type="date"]');
+        if (reverseDateInput) {
+            reverseDateInput.value = today;
+        }
+        
+        // Add smooth scrolling for carousel on mobile
+        const carousel = document.getElementById('celebrity-carousel');
+        if (carousel) {
+            carousel.style.scrollBehavior = 'smooth';
+        }
+
+        // Setup lazy loading for below-the-fold ads
+        const belowFoldAds = document.querySelectorAll('.ad-container:nth-of-type(n+3)');
+        belowFoldAds.forEach(ad => {
+            if (adObserver) {
+                adObserver.observe(ad);
+            }
+        });
+
+        // Initialize AdSense after page load
+        setTimeout(() => {
+            refreshAds();
+        }, 1000);
+    });
+
+    // Add days to birth day dropdown
+    document.addEventListener('DOMContentLoaded', function() {
+        const daySelect = document.getElementById('birth-day');
+        for (let i = 1; i <= 31; i++) {
+            const option = document.createElement('option');
+            option.value = i.toString().padStart(2, '0');
+            option.textContent = i.toString().padStart(2, '0');
+            daySelect.appendChild(option);
+        }
+    });
+
+    // Ad Performance Tracking (Optional)
+    function trackAdPerformance() {
+        const ads = document.querySelectorAll('.ad-container');
+        ads.forEach((ad, index) => {
+            ad.addEventListener('click', () => {
+                console.log(`Ad ${index + 1} clicked`);
+                // Add your analytics tracking here
+            });
+        });
+    }
+
+    // Initialize ad tracking
+    window.addEventListener('load', trackAdPerformance);
+</script>
+    </div>
+</div>
+
+
+    <!-- Hero Section with Main Calculator -->
+    <section class="py-12 lg:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl lg:text-6xl font-bold text-gradient-primary mb-6">
+                    Precision Age Calculator
+                </h1>
+                <p class="text-xl text-text-secondary max-w-3xl mx-auto">
+                    Calculate ages with mathematical precision. Discover celebrity age comparisons, track milestones, and explore the fascinating world of time calculations.
+                </p>
+            </div>
+
+            <!-- Main Age Calculator -->
+            <div class="max-w-2xl mx-auto">
+                <div class="card p-8 shadow-calculation">
+                    <div class="text-center mb-8">
+                        <h2 class="text-2xl font-semibold text-text-primary mb-2">Age Calculator</h2>
+                        <p class="text-text-secondary">Enter your birth date for instant, precise age calculation</p>
+                    </div>
+
+                    <form class="space-y-6" onsubmit="calculateAge(event)">
+                        <div class="grid grid-cols-3 gap-4">
+                            <div>
+                                <label for="birth-month" class="block text-sm font-medium text-text-primary mb-2">Month</label>
+                                <select id="birth-month" class="input-field text-center" required>
+                                    <option value>MM</option>
+                                    <option value="01">01</option>
+                                    <option value="02">02</option>
+                                    <option value="03">03</option>
+                                    <option value="04">04</option>
+                                    <option value="05">05</option>
+                                    <option value="06">06</option>
+                                    <option value="07">07</option>
+                                    <option value="08">08</option>
+                                    <option value="09">09</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="birth-day" class="block text-sm font-medium text-text-primary mb-2">Day</label>
+                                <select id="birth-day" class="input-field text-center" required>
+                                    <option value>DD</option>
+                                    <!-- Days 1-31 -->
+                                    <script>
+                                        for(let i = 1; i <= 31; i++) {
+                                            document.write(`<option value="${i.toString().padStart(2, '0')}">${i.toString().padStart(2, '0')}</option>`);
+                                        }
+                                    </script>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="birth-year" class="block text-sm font-medium text-text-primary mb-2">Year</label>
+                                <input type="number" id="birth-year" class="input-field text-center" placeholder="YYYY" min="1900" max="2025" required />
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-primary w-full text-lg py-4">
+                            Calculate My Age
+                        </button>
+                    </form>
+
+                    <!-- Results Display -->
+                    <div id="age-results" class="mt-8 hidden">
+                        <div class="bg-primary-50 rounded-xl p-6 text-center">
+                            <div class="text-4xl font-bold text-primary mb-2" id="main-age">25 Years Old</div>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+                                <div class="text-center">
+                                    <div class="text-2xl font-semibold text-text-primary" id="years-count">25</div>
+                                    <div class="text-sm text-text-secondary">Years</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-2xl font-semibold text-text-primary" id="months-count">300</div>
+                                    <div class="text-sm text-text-secondary">Months</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-2xl font-semibold text-text-primary" id="days-count">9,125</div>
+                                    <div class="text-sm text-text-secondary">Days</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-2xl font-semibold text-text-primary" id="hours-count">219,000</div>
+                                    <div class="text-sm text-text-secondary">Hours</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Content Rectangle Advertisement -->
+<div class="py-8 bg-surface-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-center">
+            <div class="ad-container ad-large-rectangle bg-gradient-to-br from-green-50 to-blue-50 border border-gray-200">
+                <div class="ad-placeholder">
+                    <ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-1234567890123456" data-ad-slot="1122334455"></ins>
+                    <script>
+                         (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Calculator Suite Tabs -->
+<section class="py-16 bg-surface-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-text-primary mb-4">Specialized Calculators</h2>
+            <p class="text-lg text-text-secondary">Explore advanced age calculation tools for every need</p>
+        </div>
+
+        <!-- Mobile Banner Ad -->
+        <div class="ad-container ad-mobile-banner lg:hidden bg-gradient-to-r from-yellow-50 to-orange-50 border border-gray-200 mb-8">
+            <div class="ad-placeholder">
+                <ins class="adsbygoogle" style="display:inline-block;width:320px;height:50px" data-ad-client="ca-pub-1234567890123456" data-ad-slot="3344556677"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+
+        <!-- Tab Navigation -->
+        <div class="flex flex-wrap justify-center mb-8 border-b border-border">
+            <button class="tab-button active px-6 py-3 font-medium text-primary border-b-2 border-primary" onclick="switchTab('age-difference')">Age Difference</button>
+            <button class="tab-button px-6 py-3 font-medium text-text-secondary hover:text-primary" onclick="switchTab('reverse-age')">Reverse Age</button>
+            <button class="tab-button px-6 py-3 font-medium text-text-secondary hover:text-primary" onclick="switchTab('life-expectancy')">Life Expectancy</button>
+        </div>
+
+        <!-- Tab Content -->
+        <div class="max-w-4xl mx-auto">
+            <!-- Age Difference Calculator -->
+            <div id="age-difference" class="tab-content">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="card p-6">
+                        <h3 class="text-xl font-semibold mb-4">Person 1</h3>
+                        <div class="space-y-4">
+                            <input type="date" class="input-field" placeholder="Birth Date" />
+                            <input type="text" class="input-field" placeholder="Name (Optional)" />
+                        </div>
+                    </div>
+                    <div class="card p-6">
+                        <h3 class="text-xl font-semibold mb-4">Person 2</h3>
+                        <div class="space-y-4">
+                            <input type="date" class="input-field" placeholder="Birth Date" />
+                            <input type="text" class="input-field" placeholder="Name (Optional)" />
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-8">
+                    <button class="btn-primary">Calculate Age Difference</button>
+                </div>
+            </div>
+
+            <!-- Reverse Age Calculator -->
+            <div id="reverse-age" class="tab-content hidden">
+                <div class="card p-8 max-w-2xl mx-auto">
+                    <h3 class="text-xl font-semibold mb-6 text-center">Find Birth Date by Age</h3>
+                    <div class="space-y-6">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-text-primary mb-2">Current Age</label>
+                                <input type="number" class="input-field" placeholder="25" />
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-text-primary mb-2">Reference Date</label>
+                                <input type="date" class="input-field" value="2025-09-08" />
+                            </div>
+                        </div>
+                        <button class="btn-primary w-full">Find Birth Date</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Life Expectancy Calculator -->
+            <div id="life-expectancy" class="tab-content hidden">
+                <div class="card p-8 max-w-2xl mx-auto">
+                    <h3 class="text-xl font-semibold mb-6 text-center">Life Expectancy Estimator</h3>
+                    <div class="space-y-6">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-text-primary mb-2">Birth Date</label>
+                                <input type="date" class="input-field" />
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-text-primary mb-2">Gender</label>
+                                <select class="input-field">
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-text-primary mb-2">Country</label>
+                            <select class="input-field">
+                                <option>United States</option>
+                                <option>Canada</option>
+                                <option>United Kingdom</option>
+                                <option>Australia</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <button class="btn-primary w-full">Estimate Life Expectancy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Celebrity Carousel -->
+<section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center mb-12">
+            <div>
+                <h2 class="text-3xl font-bold text-text-primary mb-2">Trending Celebrity Ages</h2>
+                <p class="text-lg text-text-secondary">Discover current ages of your favorite celebrities</p>
+            </div>
+            <a href="celebrity_age_explorer.html" class="btn-secondary">View All Celebrities</a>
+        </div>
+
+        <!-- Desktop Sidebar Rectangle Ad -->
+        <div class="hidden lg:flex lg:justify-end mb-8">
+            <div class="ad-container ad-rectangle bg-gradient-to-br from-purple-50 to-pink-50 border border-gray-200">
+                <div class="ad-placeholder">
+                    <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1234567890123456" data-ad-slot="9876543210"></ins>
+                    <script>
+                         (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </div>
+        </div>
+
+        <!-- Celebrity Cards Carousel -->
+        <div class="relative">
+            <div class="flex overflow-x-auto space-x-6 pb-4 scrollbar-hide" id="celebrity-carousel">
+                <!-- Celebrity Card 1 -->
+                <div class="card card-hover flex-shrink-0 w-64 p-6 cursor-pointer" onclick="showCelebrityDetails('taylor-swift')">
+                    <div class="text-center">
+                        <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3" alt="Taylor Swift" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover" onerror="this.src='https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400'; this.onerror=null;" />
+                        <h3 class="text-lg font-semibold text-text-primary mb-2">Taylor Swift</h3>
+                        <div class="text-2xl font-bold text-primary mb-1">35 years old</div>
+                        <div class="text-sm text-text-secondary mb-3">Born: Dec 13, 1989</div>
+                        <div class="text-xs text-accent font-medium">Next birthday in 96 days</div>
+                    </div>
+                </div>
+
+                <!-- Celebrity Card 2 -->
+                <div class="card card-hover flex-shrink-0 w-64 p-6 cursor-pointer" onclick="showCelebrityDetails('leonardo-dicaprio')">
+                    <div class="text-center">
+                        <img src="https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Leonardo DiCaprio" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover" onerror="this.src='https://images.pixabay.com/photo/2016/11/21/12/42/beard-1845166_960_720.jpg'; this.onerror=null;" />
+                        <h3 class="text-lg font-semibold text-text-primary mb-2">Leonardo DiCaprio</h3>
+                        <div class="text-2xl font-bold text-primary mb-1">49 years old</div>
+                        <div class="text-sm text-text-secondary mb-3">Born: Nov 11, 1974</div>
+                        <div class="text-xs text-accent font-medium">Next birthday in 64 days</div>
+                    </div>
+                </div>
+
+                <!-- Celebrity Card 3 -->
+                <div class="card card-hover flex-shrink-0 w-64 p-6 cursor-pointer" onclick="showCelebrityDetails('emma-stone')">
+                    <div class="text-center">
+                        <img src="https://images.pixabay.com/photo/2017/07/18/15/39/girl-2516967_960_720.jpg" alt="Emma Stone" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover" onerror="this.src='https://images.unsplash.com/photo-1494790108755-2616c0763c5e?q=80&w=400&auto=format&fit=crop'; this.onerror=null;" />
+                        <h3 class="text-lg font-semibold text-text-primary mb-2">Emma Stone</h3>
+                        <div class="text-2xl font-bold text-primary mb-1">35 years old</div>
+                        <div class="text-sm text-text-secondary mb-3">Born: Nov 6, 1988</div>
+                        <div class="text-xs text-accent font-medium">Next birthday in 59 days</div>
+                    </div>
+                </div>
+
+                <!-- Celebrity Card 4 -->
+                <div class="card card-hover flex-shrink-0 w-64 p-6 cursor-pointer" onclick="showCelebrityDetails('ryan-gosling')">
+                    <div class="text-center">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3" alt="Ryan Gosling" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover" onerror="this.src='https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=400'; this.onerror=null;" />
+                        <h3 class="text-lg font-semibold text-text-primary mb-2">Ryan Gosling</h3>
+                        <div class="text-2xl font-bold text-primary mb-1">43 years old</div>
+                        <div class="text-sm text-text-secondary mb-3">Born: Nov 12, 1980</div>
+                        <div class="text-xs text-accent font-medium">Next birthday in 65 days</div>
+                    </div>
+                </div>
+
+                <!-- Celebrity Card 5 -->
+                <div class="card card-hover flex-shrink-0 w-64 p-6 cursor-pointer" onclick="showCelebrityDetails('margot-robbie')">
+                    <div class="text-center">
+                        <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Margot Robbie" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover" onerror="this.src='https://images.pixabay.com/photo/2016/03/23/04/01/woman-1274056_960_720.jpg'; this.onerror=null;" />
+                        <h3 class="text-lg font-semibold text-text-primary mb-2">Margot Robbie</h3>
+                        <div class="text-2xl font-bold text-primary mb-1">34 years old</div>
+                        <div class="text-sm text-text-secondary mb-3">Born: Jul 2, 1990</div>
+                        <div class="text-xs text-accent font-medium">Next birthday in 297 days</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carousel Navigation -->
+            <button class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-surface shadow-md rounded-full p-2 hover:shadow-lg transition-all" onclick="scrollCarousel('left')">
+                <svg class="w-6 h-6 text-text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                </svg>
+            </button>
+            <button class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-surface shadow-md rounded-full p-2 hover:shadow-lg transition-all" onclick="scrollCarousel('right')">
+                <svg class="w-6 h-6 text-text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Mid Content Advertisement -->
+<div class="py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-center">
+            <div class="ad-container ad-banner bg-gradient-to-r from-indigo-50 to-cyan-50 border border-gray-200">
+                <div class="ad-placeholder">
+                    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1234567890123456" data-ad-slot="2233445566" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                    <script>
+                         (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <!-- Featured Calculations -->
+    <section class="py-16 bg-surface-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-text-primary mb-4">Featured Calculations</h2>
+                <p class="text-lg text-text-secondary">Interesting age comparisons and milestones</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Featured Calculation 1 -->
+                <div class="card p-6 text-center">
+                    <div class="w-16 h-16 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-text-primary mb-2">Generation Comparison</h3>
+                    <p class="text-text-secondary mb-4">Compare ages across different generations and discover fascinating patterns</p>
+                    <button class="btn-accent">Explore Generations</button>
+                </div>
+
+                <!-- Featured Calculation 2 -->
+                <div class="card p-6 text-center">
+                    <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-text-primary mb-2">Age Milestones</h3>
+                    <p class="text-text-secondary mb-4">Track important life milestones and upcoming age-related events</p>
+                    <button class="btn-primary">Track Milestones</button>
+                </div>
+
+                <!-- Featured Calculation 3 -->
+                <div class="card p-6 text-center">
+                    <div class="w-16 h-16 bg-success-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-text-primary mb-2">Age Statistics</h3>
+                    <p class="text-text-secondary mb-4">Discover fascinating statistics about aging and life expectancy trends</p>
+                    <button class="btn-secondary">View Statistics</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-text-primary mb-4">Trusted by Millions</h2>
+                <p class="text-lg text-text-secondary">Join millions who trust Age Calculator Pro for precision calculations</p>
+            </div>
+
+            <!-- Statistics -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-primary mb-2">2.5M+</div>
+                    <div class="text-text-secondary">Calculations Performed</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-primary mb-2">500K+</div>
+                    <div class="text-text-secondary">Active Users</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-primary mb-2">99.9%</div>
+                    <div class="text-text-secondary">Accuracy Rate</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-primary mb-2">24/7</div>
+                    <div class="text-text-secondary">Available</div>
+                </div>
+            </div>
+
+            <!-- Testimonials -->
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="card p-6">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=100&auto=format&fit=crop&ixlib=rb-4.0.3" alt="User testimonial" class="w-12 h-12 rounded-full mr-4 object-cover" onerror="this.src='https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=100'; this.onerror=null;" />
+                        <div>
+                            <div class="font-semibold text-text-primary">Michael Chen</div>
+                            <div class="text-sm text-text-secondary">Life Coach</div>
+                        </div>
+                    </div>
+                    <p class="text-text-secondary">"The precision and additional features make this the best age calculator I've used. Perfect for milestone planning with clients."</p>
+                </div>
+
+                <div class="card p-6">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=100" alt="User testimonial" class="w-12 h-12 rounded-full mr-4 object-cover" onerror="this.src='https://images.pixabay.com/photo/2016/03/23/04/01/woman-1274056_960_720.jpg'; this.onerror=null;" />
+                        <div>
+                            <div class="font-semibold text-text-primary">Sarah Johnson</div>
+                            <div class="text-sm text-text-secondary">Event Planner</div>
+                        </div>
+                    </div>
+                    <p class="text-text-secondary">"Love the celebrity age feature! It's fun to compare ages and the calculations are always spot-on. Great for party planning."</p>
+                </div>
+
+                <div class="card p-6">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.pixabay.com/photo/2017/07/18/15/39/girl-2516967_960_720.jpg" alt="User testimonial" class="w-12 h-12 rounded-full mr-4 object-cover" onerror="this.src='https://images.unsplash.com/photo-1494790108755-2616c0763c5e?q=80&w=100&auto=format&fit=crop'; this.onerror=null;" />
+                        <div>
+                            <div class="font-semibold text-text-primary">Dr. Amanda Rodriguez</div>
+                            <div class="text-sm text-text-secondary">Researcher</div>
+                        </div>
+                    </div>
+                    <p class="text-text-secondary">"As a researcher, accuracy is crucial. This calculator provides the precision I need with additional insights that are incredibly valuable."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Footer Advertisement -->
+<div class="py-8 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-center">
+            <div class="ad-container ad-large-rectangle bg-gradient-to-br from-teal-50 to-green-50 border border-gray-200">
+                <div class="ad-placeholder">
+                    <ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-1234567890123456" data-ad-slot="4455667788"></ins>
+                    <script>
+                         (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <!-- Footer -->
+    <footer class="bg-text-primary text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <svg class="h-8 w-8 text-accent" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 8v16M20 8v16M8 16h16" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        <span class="ml-2 text-xl font-bold">Age Calculator Pro</span>
+                    </div>
+                    <p class="text-gray-300 mb-4">Precision age calculations with celebrity comparisons and milestone tracking.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Calculators</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="homepage_interactive_calculator_hub.html" class="hover:text-accent transition-colors">Age Calculator</a></li>
+                        <li><a href="calculator_suite_advanced_tools.html" class="hover:text-accent transition-colors">Advanced Tools</a></li>
+                        <li><a href="javascript:void(0)" class="hover:text-accent transition-colors">Date Calculator</a></li>
+                        <li><a href="javascript:void(0)" class="hover:text-accent transition-colors">Life Expectancy</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Features</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="celebrity_age_explorer.html" class="hover:text-accent transition-colors">Celebrity Ages</a></li>
+                        <li><a href="personal_dashboard_milestone_tracker.html" class="hover:text-accent transition-colors">Milestone Tracker</a></li>
+                        <li><a href="javascript:void(0)" class="hover:text-accent transition-colors">Age Comparisons</a></li>
+                        <li><a href="javascript:void(0)" class="hover:text-accent transition-colors">Statistics</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Support</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="javascript:void(0)" class="hover:text-accent transition-colors">Help Center</a></li>
+                        <li><a href="javascript:void(0)" class="hover:text-accent transition-colors">Privacy Policy</a></li>
+                        <li><a href="javascript:void(0)" class="hover:text-accent transition-colors">Terms of Service</a></li>
+                        <li><a href="javascript:void(0)" class="hover:text-accent transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
+                <p>&copy; 2025 Age Calculator Pro. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Age calculation function
+        function calculateAge(event) {
+            event.preventDefault();
+            
+            const month = document.getElementById('birth-month').value;
+            const day = document.getElementById('birth-day').value;
+            const year = document.getElementById('birth-year').value;
+            
+            if (!month || !day || !year) {
+                alert('Please fill in all fields');
+                return;
+            }
+            
+            const birthDate = new Date(year, month - 1, day);
+            const today = new Date();
+            
+            // Calculate age
+            let age = today.getFullYear() - birthDate.getFullYear();
+            const monthDiff = today.getMonth() - birthDate.getMonth();
+            
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+            
+            // Calculate detailed breakdown
+            const totalDays = Math.floor((today - birthDate) / (1000 * 60 * 60 * 24));
+            const totalMonths = age * 12 + monthDiff;
+            const totalHours = totalDays * 24;
+            
+            // Update display
+            document.getElementById('main-age').textContent = `${age} Years Old`;
+            document.getElementById('years-count').textContent = age.toLocaleString();
+            document.getElementById('months-count').textContent = totalMonths.toLocaleString();
+            document.getElementById('days-count').textContent = totalDays.toLocaleString();
+            document.getElementById('hours-count').textContent = totalHours.toLocaleString();
+            
+            // Show results with animation
+            const resultsDiv = document.getElementById('age-results');
+            resultsDiv.classList.remove('hidden');
+            resultsDiv.classList.add('celebration-animation');
+            
+            // Remove animation class after animation completes
+            setTimeout(() => {
+                resultsDiv.classList.remove('celebration-animation');
+            }, 400);
+        }
+
+        // Tab switching functionality
+        function switchTab(tabName) {
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => content.classList.add('hidden'));
+            
+            // Remove active class from all tab buttons
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => {
+                button.classList.remove('active', 'text-primary', 'border-primary', 'border-b-2');
+                button.classList.add('text-text-secondary');
+            });
+            
+            // Show selected tab content
+            document.getElementById(tabName).classList.remove('hidden');
+            
+            // Add active class to clicked tab button
+            event.target.classList.add('active', 'text-primary', 'border-primary', 'border-b-2');
+            event.target.classList.remove('text-text-secondary');
+        }
+
+        // Celebrity carousel scrolling
+        function scrollCarousel(direction) {
+            const carousel = document.getElementById('celebrity-carousel');
+            const scrollAmount = 280; // Width of card + gap
+            
+            if (direction === 'left') {
+                carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            } else {
+                carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
+        }
+
+        // Celebrity details function
+        function showCelebrityDetails(celebrityId) {
+            // This would typically open a modal or navigate to celebrity page
+            window.location.href = 'celebrity_age_explorer.html';
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set current date as default for reverse age calculator
+            const today = new Date().toISOString().split('T')[0];
+            const reverseDateInput = document.querySelector('#reverse-age input[type="date"]');
+            if (reverseDateInput) {
+                reverseDateInput.value = today;
+            }
+            
+            // Add smooth scrolling for carousel on mobile
+            const carousel = document.getElementById('celebrity-carousel');
+            if (carousel) {
+                carousel.style.scrollBehavior = 'smooth';
+            }
+        });
+
+        // Add days to birth day dropdown
+        document.addEventListener('DOMContentLoaded', function() {
+            const daySelect = document.getElementById('birth-day');
+            for (let i = 1; i <= 31; i++) {
+                const option = document.createElement('option');
+                option.value = i.toString().padStart(2, '0');
+                option.textContent = i.toString().padStart(2, '0');
+                daySelect.appendChild(option);
+            }
+        });
+    </script>
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+</html>

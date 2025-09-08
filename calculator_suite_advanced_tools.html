@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator Suite - Advanced Age Calculation Tools | Age Calculator Pro</title>
+    <meta name="description" content="Comprehensive age calculation toolkit with 6 specialized calculators: Traditional, Reverse, Age Difference, Life Expectancy, Zodiac, and Planetary Age calculators." />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fagecalcul4275back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
+</head>
+<body class="bg-background min-h-screen">
+    <!-- Navigation Header -->
+    <nav class="bg-surface border-b border-border-light sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <svg class="h-8 w-8 text-primary" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 8v16M20 8v16M8 16h16" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="ml-3">
+                        <h1 class="text-xl font-bold text-primary">Age Calculator Pro</h1>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="homepage_interactive_calculator_hub.html" class="text-text-secondary hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">Calculator Hub</a>
+                        <a href="celebrity_age_explorer.html" class="text-text-secondary hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">Celebrity Ages</a>
+                        <a href="calculator_suite_advanced_tools.html" class="bg-primary-50 text-primary px-3 py-2 rounded-md text-sm font-medium">Advanced Tools</a>
+                        <a href="personal_dashboard_milestone_tracker.html" class="text-text-secondary hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">Dashboard</a>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button type="button" class="text-text-secondary hover:text-primary p-2" onclick="toggleMobileMenu()">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="md:hidden hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-surface border-t border-border-light">
+                <a href="homepage_interactive_calculator_hub.html" class="text-text-secondary hover:text-primary block px-3 py-2 rounded-md text-base font-medium">Calculator Hub</a>
+                <a href="celebrity_age_explorer.html" class="text-text-secondary hover:text-primary block px-3 py-2 rounded-md text-base font-medium">Celebrity Ages</a>
+                <a href="calculator_suite_advanced_tools.html" class="bg-primary-50 text-primary block px-3 py-2 rounded-md text-base font-medium">Advanced Tools</a>
+                <a href="personal_dashboard_milestone_tracker.html" class="text-text-secondary hover:text-primary block px-3 py-2 rounded-md text-base font-medium">Dashboard</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="py-12 lg:py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl lg:text-5xl font-bold text-gradient-primary mb-6">
+                    Advanced Calculator Suite
+                </h1>
+                <p class="text-xl text-text-secondary max-w-3xl mx-auto">
+                    Comprehensive age calculation toolkit with specialized calculators for every need. From traditional calculations to planetary age comparisons.
+                </p>
+            </div>
+
+            <!-- Calculator Navigation Tabs -->
+            <div class="max-w-6xl mx-auto">
+                <div class="flex flex-wrap justify-center mb-8 border-b border-border">
+                    <button class="tab-button active px-4 py-3 font-medium text-primary border-b-2 border-primary text-sm md:text-base" onclick="switchCalculator('traditional')">Traditional Age</button>
+                    <button class="tab-button px-4 py-3 font-medium text-text-secondary hover:text-primary text-sm md:text-base" onclick="switchCalculator('reverse')">Reverse Age</button>
+                    <button class="tab-button px-4 py-3 font-medium text-text-secondary hover:text-primary text-sm md:text-base" onclick="switchCalculator('difference')">Age Difference</button>
+                    <button class="tab-button px-4 py-3 font-medium text-text-secondary hover:text-primary text-sm md:text-base" onclick="switchCalculator('life-expectancy')">Life Expectancy</button>
+                    <button class="tab-button px-4 py-3 font-medium text-text-secondary hover:text-primary text-sm md:text-base" onclick="switchCalculator('zodiac')">Zodiac Age</button>
+                    <button class="tab-button px-4 py-3 font-medium text-text-secondary hover:text-primary text-sm md:text-base" onclick="switchCalculator('planetary')">Planetary Age</button>
+                </div>
+
+                <!-- Traditional Age Calculator -->
+                <div id="traditional" class="calculator-content">
+                    <div class="card p-8 max-w-4xl mx-auto">
+                        <div class="text-center mb-8">
+                            <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                                </svg>
+                            </div>
+                            <h2 class="text-2xl font-semibold text-text-primary mb-2">Traditional Age Calculator</h2>
+                            <p class="text-text-secondary">Precise age calculations with multiple output formats</p>
+                        </div>
+
+                        <form class="space-y-6" onsubmit="calculateTraditionalAge(event)">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div>
+                                    <label for="trad-birth-date" class="block text-sm font-medium text-text-primary mb-2">Birth Date</label>
+                                    <input type="date" id="trad-birth-date" class="input-field" required />
+                                </div>
+                                <div>
+                                    <label for="trad-calc-date" class="block text-sm font-medium text-text-primary mb-2">Calculate As Of</label>
+                                    <input type="date" id="trad-calc-date" class="input-field" value="2025-09-08" required />
+                                </div>
+                                <div class="flex items-end">
+                                    <button type="submit" class="btn-primary w-full">Calculate Age</button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <!-- Results Display -->
+                        <div id="traditional-results" class="mt-8 hidden">
+                            <div class="bg-primary-50 rounded-xl p-6">
+                                <div class="text-center mb-6">
+                                    <div class="text-4xl font-bold text-primary mb-2" id="trad-main-age">25 Years Old</div>
+                                    <div class="text-text-secondary" id="trad-birth-info">Born on January 15, 2000</div>
+                                </div>
+                                
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                                    <div class="text-center">
+                                        <div class="text-2xl font-semibold text-text-primary" id="trad-years">25</div>
+                                        <div class="text-sm text-text-secondary">Years</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-2xl font-semibold text-text-primary" id="trad-months">300</div>
+                                        <div class="text-sm text-text-secondary">Total Months</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-2xl font-semibold text-text-primary" id="trad-days">9,125</div>
+                                        <div class="text-sm text-text-secondary">Total Days</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-2xl font-semibold text-text-primary" id="trad-hours">219,000</div>
+                                        <div class="text-sm text-text-secondary">Total Hours</div>
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-text-secondary">
+                                    <div class="bg-surface rounded-lg p-4">
+                                        <div class="font-medium mb-2">Detailed Breakdown</div>
+                                        <div id="trad-detailed">25 years, 7 months, 24 days</div>
+                                    </div>
+                                    <div class="bg-surface rounded-lg p-4">
+                                        <div class="font-medium mb-2">Next Birthday</div>
+                                        <div id="trad-next-birthday">In 129 days (January 15, 2026)</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reverse Age Calculator -->
+                <div id="reverse" class="calculator-content hidden">
+                    <div class="card p-8 max-w-4xl mx-auto">
+                        <div class="text-center mb-8">
+                            <div class="w-16 h-16 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                            </div>
+                            <h2 class="text-2xl font-semibold text-text-primary mb-2">Reverse Age Calculator</h2>
+                            <p class="text-text-secondary">Find birth date from current age - perfect for historical research</p>
+                        </div>
+
+                        <form class="space-y-6" onsubmit="calculateReverseAge(event)">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div>
+                                    <label for="reverse-age" class="block text-sm font-medium text-text-primary mb-2">Current Age</label>
+                                    <input type="number" id="reverse-age" class="input-field" placeholder="25" min="0" max="150" required />
+                                </div>
+                                <div>
+                                    <label for="reverse-ref-date" class="block text-sm font-medium text-text-primary mb-2">Reference Date</label>
+                                    <input type="date" id="reverse-ref-date" class="input-field" value="2025-09-08" required />
+                                </div>
+                                <div class="flex items-end">
+                                    <button type="submit" class="btn-accent w-full">Find Birth Date</button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <!-- Results Display -->
+                        <div id="reverse-results" class="mt-8 hidden">
+                            <div class="bg-accent-50 rounded-xl p-6">
+                                <div class="text-center mb-6">
+                                    <div class="text-3xl font-bold text-accent mb-2" id="reverse-birth-date">January 15, 2000</div>
+                                    <div class="text-text-secondary" id="reverse-age-info">Age 25 as of September 8, 2025</div>
+                                </div>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                                    <div class="bg-surface rounded-lg p-4">
+                                        <div class="font-medium text-text-primary mb-2">Birth Year Context</div>
+                                        <div class="text-text-secondary" id="reverse-context">Born in the year 2000 - Millennium Generation</div>
+                                    </div>
+                                    <div class="bg-surface rounded-lg p-4">
+                                        <div class="font-medium text-text-primary mb-2">Age Range</div>
+                                        <div class="text-text-secondary" id="reverse-range">Between Jan 15, 2000 - Jan 14, 2001</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Age Difference Calculator -->
+                <div id="difference" class="calculator-content hidden">
+                    <div class="card p-8 max-w-4xl mx-auto">
+                        <div class="text-center mb-8">
+                            <div class="w-16 h-16 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <svg class="w-8 h-8 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                                </svg>
+                            </div>
+                            <h2 class="text-2xl font-semibold text-text-primary mb-2">Age Difference Calculator</h2>
+                            <p class="text-text-secondary">Compare ages between two people with visual timeline</p>
+                        </div>
+
+                        <form class="space-y-6" onsubmit="calculateAgeDifference(event)">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div class="space-y-4">
+                                    <h3 class="text-lg font-semibold text-text-primary">Person 1</h3>
+                                    <div>
+                                        <label for="diff-name1" class="block text-sm font-medium text-text-primary mb-2">Name (Optional)</label>
+                                        <input type="text" id="diff-name1" class="input-field" placeholder="John" />
+                                    </div>
+                                    <div>
+                                        <label for="diff-birth1" class="block text-sm font-medium text-text-primary mb-2">Birth Date</label>
+                                        <input type="date" id="diff-birth1" class="input-field" required />
+                                    </div>
+                                </div>
+                                <div class="space-y-4">
+                                    <h3 class="text-lg font-semibold text-text-primary">Person 2</h3>
+                                    <div>
+                                        <label for="diff-name2" class="block text-sm font-medium text-text-primary mb-2">Name (Optional)</label>
+                                        <input type="text" id="diff-name2" class="input-field" placeholder="Jane" />
+                                    </div>
+                                    <div>
+                                        <label for="diff-birth2" class="block text-sm font-medium text-text-primary mb-2">Birth Date</label>
+                                        <input type="date" id="diff-birth2" class="input-field" required />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn-secondary">Compare Ages</button>
+                            </div>
+                        </form>
+
+                        <!-- Results Display -->
+                        <div id="difference-results" class="mt-8 hidden">
+                            <div class="bg-secondary-50 rounded-xl p-6">
+                                <div class="text-center mb-6">
+                                    <div class="text-3xl font-bold text-secondary mb-2" id="diff-main-result">3 years, 2 months older</div>
+                                    <div class="text-text-secondary" id="diff-comparison">John is older than Jane</div>
+                                </div>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                                    <div class="text-center">
+                                        <div class="text-xl font-semibold text-text-primary" id="diff-years">3</div>
+                                        <div class="text-sm text-text-secondary">Years</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-xl font-semibold text-text-primary" id="diff-months">38</div>
+                                        <div class="text-sm text-text-secondary">Total Months</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-xl font-semibold text-text-primary" id="diff-days">1,157</div>
+                                        <div class="text-sm text-text-secondary">Total Days</div>
+                                    </div>
+                                </div>
+
+                                <!-- Visual Timeline -->
+                                <div class="bg-surface rounded-lg p-4">
+                                    <div class="font-medium text-text-primary mb-4">Age Timeline</div>
+                                    <div class="space-y-3" id="diff-timeline">
+                                        <div class="flex items-center">
+                                            <div class="w-3 h-3 bg-primary rounded-full mr-3"></div>
+                                            <div class="text-sm"><span class="font-medium">John:</span> Born January 15, 1997 (28 years old)</div>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <div class="w-3 h-3 bg-accent rounded-full mr-3"></div>
+                                            <div class="text-sm"><span class="font-medium">Jane:</span> Born March 20, 2000 (25 years old)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Life Expectancy Calculator -->
+                <div id="life-expectancy" class="calculator-content hidden">
+                    <div class="card p-8 max-w-4xl mx-auto">
+                        <div class="text-center mb-8">
+                            <div class="w-16 h-16 bg-success-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <svg class="w-8 h-8 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                                </svg>
+                            </div>
+                            <h2 class="text-2xl font-semibold text-text-primary mb-2">Life Expectancy Estimator</h2>
+                            <p class="text-text-secondary">Personalized life expectancy based on demographics and lifestyle</p>
+                        </div>
+
+                        <form class="space-y-6" onsubmit="calculateLifeExpectancy(event)">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="space-y-4">
+                                    <div>
+                                        <label for="life-birth-date" class="block text-sm font-medium text-text-primary mb-2">Birth Date</label>
+                                        <input type="date" id="life-birth-date" class="input-field" required />
+                                    </div>
+                                    <div>
+                                        <label for="life-gender" class="block text-sm font-medium text-text-primary mb-2">Gender</label>
+                                        <select id="life-gender" class="input-field" required>
+                                            <option value>Select Gender</option>
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label for="life-country" class="block text-sm font-medium text-text-primary mb-2">Country</label>
+                                        <select id="life-country" class="input-field" required>
+                                            <option value>Select Country</option>
+                                            <option value="us">United States</option>
+                                            <option value="ca">Canada</option>
+                                            <option value="uk">United Kingdom</option>
+                                            <option value="au">Australia</option>
+                                            <option value="jp">Japan</option>
+                                            <option value="de">Germany</option>
+                                            <option value="fr">France</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="space-y-4">
+                                    <div>
+                                        <label for="life-lifestyle" class="block text-sm font-medium text-text-primary mb-2">Lifestyle</label>
+                                        <select id="life-lifestyle" class="input-field" required>
+                                            <option value>Select Lifestyle</option>
+                                            <option value="very-healthy">Very Healthy</option>
+                                            <option value="healthy">Healthy</option>
+                                            <option value="average">Average</option>
+                                            <option value="unhealthy">Unhealthy</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label for="life-exercise" class="block text-sm font-medium text-text-primary mb-2">Exercise Frequency</label>
+                                        <select id="life-exercise" class="input-field" required>
+                                            <option value>Select Frequency</option>
+                                            <option value="daily">Daily</option>
+                                            <option value="regular">3-5 times/week</option>
+                                            <option value="occasional">1-2 times/week</option>
+                                            <option value="rarely">Rarely</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label for="life-smoking" class="block text-sm font-medium text-text-primary mb-2">Smoking Status</label>
+                                        <select id="life-smoking" class="input-field" required>
+                                            <option value>Select Status</option>
+                                            <option value="never">Never Smoked</option>
+                                            <option value="former">Former Smoker</option>
+                                            <option value="light">Light Smoker</option>
+                                            <option value="heavy">Heavy Smoker</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn-primary">Calculate Life Expectancy</button>
+                            </div>
+                        </form>
+
+                        <!-- Results Display -->
+                        <div id="life-expectancy-results" class="mt-8 hidden">
+                            <div class="bg-success-50 rounded-xl p-6">
+                                <div class="text-center mb-6">
+                                    <div class="text-4xl font-bold text-success mb-2" id="life-expectancy-age">82 years</div>
+                                    <div class="text-text-secondary" id="life-expectancy-date">Estimated until March 2057</div>
+                                </div>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                                    <div class="text-center">
+                                        <div class="text-xl font-semibold text-text-primary" id="life-years-left">57</div>
+                                        <div class="text-sm text-text-secondary">Years Remaining</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-xl font-semibold text-text-primary" id="life-months-left">684</div>
+                                        <div class="text-sm text-text-secondary">Months Remaining</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-xl font-semibold text-text-primary" id="life-days-left">20,805</div>
+                                        <div class="text-sm text-text-secondary">Days Remaining</div>
+                                    </div>
+                                </div>
+
+                                <div class="bg-surface rounded-lg p-4">
+                                    <div class="font-medium text-text-primary mb-3">Factors Considered</div>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-text-secondary" id="life-factors">
+                                        <div>• Gender: Female (+5 years)</div>
+                                        <div>• Country: United States (baseline)</div>
+                                        <div>• Lifestyle: Healthy (+3 years)</div>
+                                        <div>• Exercise: Regular (+2 years)</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Zodiac Age Calculator -->
+                <div id="zodiac" class="calculator-content hidden">
+                    <div class="card p-8 max-w-4xl mx-auto">
+                        <div class="text-center mb-8">
+                            <div class="w-16 h-16 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+                                </svg>
+                            </div>
+                            <h2 class="text-2xl font-semibold text-text-primary mb-2">Zodiac Age Calculator</h2>
+                            <p class="text-text-secondary">Combine age calculations with Eastern and Western astrology</p>
+                        </div>
+
+                        <form class="space-y-6" onsubmit="calculateZodiacAge(event)">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="zodiac-birth-date" class="block text-sm font-medium text-text-primary mb-2">Birth Date</label>
+                                    <input type="date" id="zodiac-birth-date" class="input-field" required />
+                                </div>
+                                <div>
+                                    <label for="zodiac-birth-time" class="block text-sm font-medium text-text-primary mb-2">Birth Time (Optional)</label>
+                                    <input type="time" id="zodiac-birth-time" class="input-field" />
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn-accent">Calculate Zodiac Age</button>
+                            </div>
+                        </form>
+
+                        <!-- Results Display -->
+                        <div id="zodiac-results" class="mt-8 hidden">
+                            <div class="bg-accent-50 rounded-xl p-6">
+                                <div class="text-center mb-6">
+                                    <div class="text-3xl font-bold text-accent mb-2" id="zodiac-main-age">25 Years Old</div>
+                                    <div class="text-text-secondary" id="zodiac-birth-info">Born January 15, 2000</div>
+                                </div>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div class="bg-surface rounded-lg p-4">
+                                        <h3 class="font-semibold text-text-primary mb-3">Western Zodiac</h3>
+                                        <div class="space-y-2">
+                                            <div class="flex justify-between">
+                                                <span class="text-text-secondary">Sun Sign:</span>
+                                                <span class="font-medium" id="zodiac-sun-sign">Capricorn ♑</span>
+                                            </div>
+                                            <div class="flex justify-between">
+                                                <span class="text-text-secondary">Element:</span>
+                                                <span class="font-medium" id="zodiac-element">Earth</span>
+                                            </div>
+                                            <div class="flex justify-between">
+                                                <span class="text-text-secondary">Quality:</span>
+                                                <span class="font-medium" id="zodiac-quality">Cardinal</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="bg-surface rounded-lg p-4">
+                                        <h3 class="font-semibold text-text-primary mb-3">Chinese Zodiac</h3>
+                                        <div class="space-y-2">
+                                            <div class="flex justify-between">
+                                                <span class="text-text-secondary">Animal:</span>
+                                                <span class="font-medium" id="zodiac-animal">Dragon 🐉</span>
+                                            </div>
+                                            <div class="flex justify-between">
+                                                <span class="text-text-secondary">Element:</span>
+                                                <span class="font-medium" id="zodiac-chinese-element">Metal</span>
+                                            </div>
+                                            <div class="flex justify-between">
+                                                <span class="text-text-secondary">Cycle Year:</span>
+                                                <span class="font-medium" id="zodiac-cycle">17 of 60</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mt-6 bg-surface rounded-lg p-4">
+                                    <h3 class="font-semibold text-text-primary mb-3">Age Milestones</h3>
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                                        <div class="text-center">
+                                            <div class="font-medium text-primary" id="zodiac-saturn-return">Saturn Return</div>
+                                            <div class="text-text-secondary">Age 29-30</div>
+                                        </div>
+                                        <div class="text-center">
+                                            <div class="font-medium text-primary" id="zodiac-jupiter-return">Jupiter Return</div>
+                                            <div class="text-text-secondary">Every 12 years</div>
+                                        </div>
+                                        <div class="text-center">
+                                            <div class="font-medium text-primary" id="zodiac-chinese-cycle">Chinese Cycle</div>
+                                            <div class="text-text-secondary">Every 60 years</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Planetary Age Calculator -->
+                <div id="planetary" class="calculator-content hidden">
+                    <div class="card p-8 max-w-4xl mx-auto">
+                        <div class="text-center mb-8">
+                            <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                            </div>
+                            <h2 class="text-2xl font-semibold text-text-primary mb-2">Age on Other Planets</h2>
+                            <p class="text-text-secondary">Discover how old you would be on different planets in our solar system</p>
+                        </div>
+
+                        <form class="space-y-6" onsubmit="calculatePlanetaryAge(event)">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="planetary-birth-date" class="block text-sm font-medium text-text-primary mb-2">Birth Date</label>
+                                    <input type="date" id="planetary-birth-date" class="input-field" required />
+                                </div>
+                                <div class="flex items-end">
+                                    <button type="submit" class="btn-primary w-full">Calculate Planetary Ages</button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <!-- Results Display -->
+                        <div id="planetary-results" class="mt-8 hidden">
+                            <div class="bg-primary-50 rounded-xl p-6">
+                                <div class="text-center mb-6">
+                                    <div class="text-3xl font-bold text-primary mb-2">Your Age Across the Solar System</div>
+                                    <div class="text-text-secondary" id="planetary-earth-age">25 years old on Earth</div>
+                                </div>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                                    <!-- Mercury -->
+                                    <div class="bg-surface rounded-lg p-4 text-center">
+                                        <div class="text-2xl mb-2">☿️</div>
+                                        <div class="font-semibold text-text-primary">Mercury</div>
+                                        <div class="text-2xl font-bold text-accent mt-2" id="mercury-age">103.8</div>
+                                        <div class="text-sm text-text-secondary">years old</div>
+                                        <div class="text-xs text-text-tertiary mt-1">88 Earth days/year</div>
+                                    </div>
+
+                                    <!-- Venus -->
+                                    <div class="bg-surface rounded-lg p-4 text-center">
+                                        <div class="text-2xl mb-2">♀️</div>
+                                        <div class="font-semibold text-text-primary">Venus</div>
+                                        <div class="text-2xl font-bold text-accent mt-2" id="venus-age">40.7</div>
+                                        <div class="text-sm text-text-secondary">years old</div>
+                                        <div class="text-xs text-text-tertiary mt-1">225 Earth days/year</div>
+                                    </div>
+
+                                    <!-- Mars -->
+                                    <div class="bg-surface rounded-lg p-4 text-center">
+                                        <div class="text-2xl mb-2">♂️</div>
+                                        <div class="font-semibold text-text-primary">Mars</div>
+                                        <div class="text-2xl font-bold text-accent mt-2" id="mars-age">13.3</div>
+                                        <div class="text-sm text-text-secondary">years old</div>
+                                        <div class="text-xs text-text-tertiary mt-1">687 Earth days/year</div>
+                                    </div>
+
+                                    <!-- Jupiter -->
+                                    <div class="bg-surface rounded-lg p-4 text-center">
+                                        <div class="text-2xl mb-2">♃</div>
+                                        <div class="font-semibold text-text-primary">Jupiter</div>
+                                        <div class="text-2xl font-bold text-accent mt-2" id="jupiter-age">2.1</div>
+                                        <div class="text-sm text-text-secondary">years old</div>
+                                        <div class="text-xs text-text-tertiary mt-1">12 Earth years/year</div>
+                                    </div>
+
+                                    <!-- Saturn -->
+                                    <div class="bg-surface rounded-lg p-4 text-center">
+                                        <div class="text-2xl mb-2">♄</div>
+                                        <div class="font-semibold text-text-primary">Saturn</div>
+                                        <div class="text-2xl font-bold text-accent mt-2" id="saturn-age">0.8</div>
+                                        <div class="text-sm text-text-secondary">years old</div>
+                                        <div class="text-xs text-text-tertiary mt-1">29 Earth years/year</div>
+                                    </div>
+
+                                    <!-- Uranus -->
+                                    <div class="bg-surface rounded-lg p-4 text-center">
+                                        <div class="text-2xl mb-2">♅</div>
+                                        <div class="font-semibold text-text-primary">Uranus</div>
+                                        <div class="text-2xl font-bold text-accent mt-2" id="uranus-age">0.3</div>
+                                        <div class="text-sm text-text-secondary">years old</div>
+                                        <div class="text-xs text-text-tertiary mt-1">84 Earth years/year</div>
+                                    </div>
+
+                                    <!-- Neptune -->
+                                    <div class="bg-surface rounded-lg p-4 text-center">
+                                        <div class="text-2xl mb-2">♆</div>
+                                        <div class="font-semibold text-text-primary">Neptune</div>
+                                        <div class="text-2xl font-bold text-accent mt-2" id="neptune-age">0.15</div>
+                                        <div class="text-sm text-text-secondary">years old</div>
+                                        <div class="text-xs text-text-tertiary mt-1">165 Earth years/year</div>
+                                    </div>
+
+                                    <!-- Pluto -->
+                                    <div class="bg-surface rounded-lg p-4 text-center">
+                                        <div class="text-2xl mb-2">♇</div>
+                                        <div class="font-semibold text-text-primary">Pluto</div>
+                                        <div class="text-2xl font-bold text-accent mt-2" id="pluto-age">0.1</div>
+                                        <div class="text-sm text-text-secondary">years old</div>
+                                        <div class="text-xs text-text-tertiary mt-1">248 Earth years/year</div>
+                                    </div>
+                                </div>
+
+                                <div class="mt-6 bg-surface rounded-lg p-4">
+                                    <h3 class="font-semibold text-text-primary mb-3">Fun Facts</h3>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-text-secondary">
+                                        <div>• You'd have over 100 birthdays on Mercury!</div>
+                                        <div>• On Neptune, you haven't even had your first birthday yet</div>
+                                        <div>• Jupiter's year is 12 times longer than Earth's</div>
+                                        <div>• Pluto takes 248 Earth years to orbit the Sun once</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculation History Section -->
+    <section class="py-16 bg-surface-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-text-primary mb-4">Recent Calculations</h2>
+                <p class="text-lg text-text-secondary">Your calculation history (saved locally)</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <div id="calculation-history" class="space-y-4">
+                    <!-- Sample History Items -->
+                    <div class="card p-4 flex items-center justify-between">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center mr-4">
+                                <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="font-medium text-text-primary">Traditional Age Calculation</div>
+                                <div class="text-sm text-text-secondary">Born: Jan 15, 2000 → 25 years old</div>
+                            </div>
+                        </div>
+                        <div class="text-sm text-text-tertiary">2 hours ago</div>
+                    </div>
+
+                    <div class="card p-4 flex items-center justify-between">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-accent-100 rounded-full flex items-center justify-center mr-4">
+                                <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="font-medium text-text-primary">Planetary Age Calculation</div>
+                                <div class="text-sm text-text-secondary">25 years on Earth → 2.1 years on Jupiter</div>
+                            </div>
+                        </div>
+                        <div class="text-sm text-text-tertiary">1 day ago</div>
+                    </div>
+
+                    <div class="text-center py-8">
+                        <div class="text-text-tertiary mb-4">
+                            <svg class="w-12 h-12 mx-auto mb-2 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                            </svg>
+                        </div>
+                        <p class="text-text-secondary">Start calculating to see your history here</p>
+                        <button class="btn-secondary mt-4" onclick="clearHistory()">Clear History</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Help & Tips Section -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-text-primary mb-4">Calculator Tips & Help</h2>
+                <p class="text-lg text-text-secondary">Get the most out of our advanced calculation tools</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Tip 1 -->
+                <div class="card p-6">
+                    <div class="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-text-primary mb-2">Precision Matters</h3>
+                    <p class="text-text-secondary">All calculations account for leap years and exact dates. Results are mathematically precise to the day.</p>
+                </div>
+
+                <!-- Tip 2 -->
+                <div class="card p-6">
+                    <div class="w-12 h-12 bg-accent-100 rounded-full flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-text-primary mb-2">Time Zones</h3>
+                    <p class="text-text-secondary">Calculations use your local time zone. For historical dates, results reflect the Gregorian calendar system.</p>
+                </div>
+
+                <!-- Tip 3 -->
+                <div class="card p-6">
+                    <div class="w-12 h-12 bg-success-100 rounded-full flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-text-primary mb-2">Data Privacy</h3>
+                    <p class="text-text-secondary">Your calculations are processed locally and stored in your browser. No personal data is sent to our servers.</p>
+                </div>
+
+                <!-- Tip 4 -->
+                <div class="card p-6">
+                    <div class="w-12 h-12 bg-secondary-100 rounded-full flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-text-primary mb-2">Share Results</h3>
+                    <p class="text-text-secondary">Use the share buttons to copy calculation results or share interesting findings with friends and family.</p>
+                </div>
+
+                <!-- Tip 5 -->
+                <div class="card p-6">
+                    <div class="w-12 h-12 bg-warning-100 rounded-full flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-warning" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-text-primary mb-2">Zodiac Accuracy</h3>
+                    <p class="text-text-secondary">Zodiac calculations use astronomical data. Birth time improves accuracy for rising signs and moon phases.</p>
+                </div>
+
+                <!-- Tip 6 -->
+                <div class="card p-6">
+                    <div class="w-12 h-12 bg-error-100 rounded-full flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-error" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-text-primary mb-2">Life Expectancy</h3>
+                    <p class="text-text-secondary">Life expectancy estimates are based on statistical averages and should not be considered medical advice.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-text-primary text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <svg class="h-8 w-8 text-accent" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 8v16M20 8v16M8 16h16" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        <span class="ml-2 text-xl font-bold">Age Calculator Pro</span>
+                    </div>
+                    <p class="text-gray-300 mb-4">Advanced age calculation tools with precision and entertainment value.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Calculators</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="homepage_interactive_calculator_hub.html" class="hover:text-accent transition-colors">Age Calculator</a></li>
+                        <li><a href="calculator_suite_advanced_tools.html" class="hover:text-accent transition-colors">Advanced Tools</a></li>
+                        <li><a href="javascript:void(0)" class="hover:text-accent transition-colors">Date Calculator</a></li>
+                        <li><a href="javascript:void(0)" class="hover:text-accent transition-colors">Life Expectancy</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Features</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="celebrity_age_explorer.html" class="hover:text-accent transition-colors">Celebrity Ages</a></li>
+                        <li><a href="personal_dashboard_milestone_tracker.html" class="hover:text-accent transition-colors">Milestone Tracker</a></li>
+                        <li><a href="javascript:void(0)" class="hover:text-accent transition-colors">Age Comparisons</a></li>
+                        <li><a href="javascript:void(0)" class="hover:text-accent transition-colors">Statistics</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Support</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="javascript:void(0)" class="hover:text-accent transition-colors">Help Center</a></li>
+                        <li><a href="javascript:void(0)" class="hover:text-accent transition-colors">Privacy Policy</a></li>
+                        <li><a href="javascript:void(0)" class="hover:text-accent transition-colors">Terms of Service</a></li>
+                        <li><a href="javascript:void(0)" class="hover:text-accent transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
+                <p>&copy; 2025 Age Calculator Pro. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Calculator switching functionality
+        function switchCalculator(calculatorName) {
+            // Hide all calculator contents
+            const calculatorContents = document.querySelectorAll('.calculator-content');
+            calculatorContents.forEach(content => content.classList.add('hidden'));
+            
+            // Remove active class from all tab buttons
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => {
+                button.classList.remove('active', 'text-primary', 'border-primary', 'border-b-2');
+                button.classList.add('text-text-secondary');
+            });
+            
+            // Show selected calculator content
+            document.getElementById(calculatorName).classList.remove('hidden');
+            
+            // Add active class to clicked tab button
+            event.target.classList.add('active', 'text-primary', 'border-primary', 'border-b-2');
+            event.target.classList.remove('text-text-secondary');
+        }
+
+        // Traditional Age Calculator
+        function calculateTraditionalAge(event) {
+            event.preventDefault();
+            
+            const birthDate = new Date(document.getElementById('trad-birth-date').value);
+            const calcDate = new Date(document.getElementById('trad-calc-date').value);
+            
+            if (!birthDate || !calcDate) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            if (birthDate > calcDate) {
+                alert('Birth date cannot be in the future');
+                return;
+            }
+            
+            // Calculate age
+            let age = calcDate.getFullYear() - birthDate.getFullYear();
+            const monthDiff = calcDate.getMonth() - birthDate.getMonth();
+            
+            if (monthDiff < 0 || (monthDiff === 0 && calcDate.getDate() < birthDate.getDate())) {
+                age--;
+            }
+            
+            // Calculate detailed breakdown
+            const totalDays = Math.floor((calcDate - birthDate) / (1000 * 60 * 60 * 24));
+            const totalMonths = Math.floor(totalDays / 30.44);
+            const totalHours = totalDays * 24;
+            
+            // Calculate next birthday
+            const nextBirthday = new Date(calcDate.getFullYear(), birthDate.getMonth(), birthDate.getDate());
+            if (nextBirthday < calcDate) {
+                nextBirthday.setFullYear(calcDate.getFullYear() + 1);
+            }
+            const daysToNextBirthday = Math.ceil((nextBirthday - calcDate) / (1000 * 60 * 60 * 24));
+            
+            // Update display
+            document.getElementById('trad-main-age').textContent = `${age} Years Old`;
+            document.getElementById('trad-birth-info').textContent = `Born on ${birthDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}`;
+            document.getElementById('trad-years').textContent = age.toLocaleString();
+            document.getElementById('trad-months').textContent = totalMonths.toLocaleString();
+            document.getElementById('trad-days').textContent = totalDays.toLocaleString();
+            document.getElementById('trad-hours').textContent = totalHours.toLocaleString();
+            
+            // Detailed breakdown
+            const detailedAge = `${age} years, ${Math.floor((totalDays % 365.25) / 30.44)} months, ${Math.floor(totalDays % 30.44)} days`;
+            document.getElementById('trad-detailed').textContent = detailedAge;
+            document.getElementById('trad-next-birthday').textContent = `In ${daysToNextBirthday} days (${nextBirthday.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })})`;
+            
+            // Show results
+            const resultsDiv = document.getElementById('traditional-results');
+            resultsDiv.classList.remove('hidden');
+            resultsDiv.classList.add('celebration-animation');
+            
+            // Save to history
+            saveToHistory('Traditional Age', `Born: ${birthDate.toLocaleDateString()} → ${age} years old`);
+            
+            setTimeout(() => {
+                resultsDiv.classList.remove('celebration-animation');
+            }, 400);
+        }
+
+        // Reverse Age Calculator
+        function calculateReverseAge(event) {
+            event.preventDefault();
+            
+            const age = parseInt(document.getElementById('reverse-age').value);
+            const refDate = new Date(document.getElementById('reverse-ref-date').value);
+            
+            if (!age || !refDate) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            // Calculate birth date
+            const birthYear = refDate.getFullYear() - age;
+            const birthDate = new Date(birthYear, refDate.getMonth(), refDate.getDate());
+            
+            // Generate context
+            let context = '';
+            if (birthYear >= 1997 && birthYear <= 2012) {
+                context = 'Generation Z';
+            } else if (birthYear >= 1981 && birthYear <= 1996) {
+                context = 'Millennial Generation';
+            } else if (birthYear >= 1965 && birthYear <= 1980) {
+                context = 'Generation X';
+            } else if (birthYear >= 1946 && birthYear <= 1964) {
+                context = 'Baby Boomer Generation';
+            } else {
+                context = 'Silent Generation or earlier';
+            }
+            
+            // Update display
+            document.getElementById('reverse-birth-date').textContent = birthDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+            document.getElementById('reverse-age-info').textContent = `Age ${age} as of ${refDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}`;
+            document.getElementById('reverse-context').textContent = `Born in the year ${birthYear} - ${context}`;
+            document.getElementById('reverse-range').textContent = `Between ${birthDate.toLocaleDateString()} - ${new Date(birthYear + 1, birthDate.getMonth(), birthDate.getDate() - 1).toLocaleDateString()}`;
+            
+            // Show results
+            const resultsDiv = document.getElementById('reverse-results');
+            resultsDiv.classList.remove('hidden');
+            resultsDiv.classList.add('celebration-animation');
+            
+            // Save to history
+            saveToHistory('Reverse Age', `Age ${age} → Born: ${birthDate.toLocaleDateString()}`);
+            
+            setTimeout(() => {
+                resultsDiv.classList.remove('celebration-animation');
+            }, 400);
+        }
+
+        // Age Difference Calculator
+        function calculateAgeDifference(event) {
+            event.preventDefault();
+            
+            const name1 = document.getElementById('diff-name1').value || 'Person 1';
+            const name2 = document.getElementById('diff-name2').value || 'Person 2';
+            const birth1 = new Date(document.getElementById('diff-birth1').value);
+            const birth2 = new Date(document.getElementById('diff-birth2').value);
+            
+            if (!birth1 || !birth2) {
+                alert('Please fill in both birth dates');
+                return;
+            }
+            
+            // Calculate ages
+            const today = new Date();
+            let age1 = today.getFullYear() - birth1.getFullYear();
+            let age2 = today.getFullYear() - birth2.getFullYear();
+            
+            const monthDiff1 = today.getMonth() - birth1.getMonth();
+            const monthDiff2 = today.getMonth() - birth2.getMonth();
+            
+            if (monthDiff1 < 0 || (monthDiff1 === 0 && today.getDate() < birth1.getDate())) {
+                age1--;
+            }
+            if (monthDiff2 < 0 || (monthDiff2 === 0 && today.getDate() < birth2.getDate())) {
+                age2--;
+            }
+            
+            // Calculate difference
+            const diffInMs = Math.abs(birth1 - birth2);
+            const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
+            const diffInMonths = Math.floor(diffInDays / 30.44);
+            const diffInYears = Math.floor(diffInMonths / 12);
+            
+            const olderPerson = birth1 < birth2 ? name1 : name2;
+            const youngerPerson = birth1 < birth2 ? name2 : name1;
+            
+            // Update display
+            document.getElementById('diff-main-result').textContent = `${diffInYears} years, ${diffInMonths % 12} months older`;
+            document.getElementById('diff-comparison').textContent = `${olderPerson} is older than ${youngerPerson}`;
+            document.getElementById('diff-years').textContent = diffInYears;
+            document.getElementById('diff-months').textContent = diffInMonths;
+            document.getElementById('diff-days').textContent = diffInDays.toLocaleString();
+            
+            // Update timeline
+            const timeline = document.getElementById('diff-timeline');
+            timeline.innerHTML = `
+                <div class="flex items-center">
+                    <div class="w-3 h-3 bg-primary rounded-full mr-3"></div>
+                    <div class="text-sm"><span class="font-medium">${name1}:</span> Born ${birth1.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })} (${age1} years old)</div>
+                </div>
+                <div class="flex items-center">
+                    <div class="w-3 h-3 bg-accent rounded-full mr-3"></div>
+                    <div class="text-sm"><span class="font-medium">${name2}:</span> Born ${birth2.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })} (${age2} years old)</div>
+                </div>
+            `;
+            
+            // Show results
+            const resultsDiv = document.getElementById('difference-results');
+            resultsDiv.classList.remove('hidden');
+            resultsDiv.classList.add('celebration-animation');
+            
+            // Save to history
+            saveToHistory('Age Difference', `${name1} vs ${name2} → ${diffInYears} years difference`);
+            
+            setTimeout(() => {
+                resultsDiv.classList.remove('celebration-animation');
+            }, 400);
+        }
+
+        // Life Expectancy Calculator
+        function calculateLifeExpectancy(event) {
+            event.preventDefault();
+            
+            const birthDate = new Date(document.getElementById('life-birth-date').value);
+            const gender = document.getElementById('life-gender').value;
+            const country = document.getElementById('life-country').value;
+            const lifestyle = document.getElementById('life-lifestyle').value;
+            const exercise = document.getElementById('life-exercise').value;
+            const smoking = document.getElementById('life-smoking').value;
+            
+            if (!birthDate || !gender || !country || !lifestyle || !exercise || !smoking) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            // Base life expectancy by country
+            const baseExpectancy = {
+                'us': 78, 'ca': 82, 'uk': 81, 'au': 83, 'jp': 84, 'de': 81, 'fr': 82, 'other': 75
+            };
+            
+            let expectancy = baseExpectancy[country] || 75;
+            
+            // Gender adjustment
+            if (gender === 'female') expectancy += 5;
+            else if (gender === 'male') expectancy += 0;
+            else expectancy += 2.5;
+            
+            // Lifestyle adjustments
+            const adjustments = {
+                lifestyle: { 'very-healthy': 4, 'healthy': 2, 'average': 0, 'unhealthy': -3 },
+                exercise: { 'daily': 3, 'regular': 2, 'occasional': 1, 'rarely': -1 },
+                smoking: { 'never': 2, 'former': 0, 'light': -5, 'heavy': -10 }
+            };
+            
+            expectancy += adjustments.lifestyle[lifestyle] || 0;
+            expectancy += adjustments.exercise[exercise] || 0;
+            expectancy += adjustments.smoking[smoking] || 0;
+            
+            // Calculate remaining time
+            const today = new Date();
+            const currentAge = today.getFullYear() - birthDate.getFullYear();
+            const yearsLeft = Math.max(0, expectancy - currentAge);
+            const monthsLeft = yearsLeft * 12;
+            const daysLeft = yearsLeft * 365.25;
+            
+            const expectedDeathDate = new Date(today.getFullYear() + yearsLeft, today.getMonth(), today.getDate());
+            
+            // Update display
+            document.getElementById('life-expectancy-age').textContent = `${Math.round(expectancy)} years`;
+            document.getElementById('life-expectancy-date').textContent = `Estimated until ${expectedDeathDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}`;
+            document.getElementById('life-years-left').textContent = Math.round(yearsLeft);
+            document.getElementById('life-months-left').textContent = Math.round(monthsLeft).toLocaleString();
+            document.getElementById('life-days-left').textContent = Math.round(daysLeft).toLocaleString();
+            
+            // Update factors
+            const factors = document.getElementById('life-factors');
+            factors.innerHTML = `
+                <div>• Gender: ${gender.charAt(0).toUpperCase() + gender.slice(1)} (${gender === 'female' ? '+5' : gender === 'male' ? '0' : '+2.5'} years)</div>
+                <div>• Country: ${country.toUpperCase()} (baseline)</div>
+                <div>• Lifestyle: ${lifestyle.replace('-', ' ')} (${adjustments.lifestyle[lifestyle] >= 0 ? '+' : ''}${adjustments.lifestyle[lifestyle]} years)</div>
+                <div>• Exercise: ${exercise} (${adjustments.exercise[exercise] >= 0 ? '+' : ''}${adjustments.exercise[exercise]} years)</div>
+            `;
+            
+            // Show results
+            const resultsDiv = document.getElementById('life-expectancy-results');
+            resultsDiv.classList.remove('hidden');
+            resultsDiv.classList.add('celebration-animation');
+            
+            // Save to history
+            saveToHistory('Life Expectancy', `Estimated ${Math.round(expectancy)} years (${Math.round(yearsLeft)} years remaining)`);
+            
+            setTimeout(() => {
+                resultsDiv.classList.remove('celebration-animation');
+            }, 400);
+        }
+
+        // Zodiac Age Calculator
+        function calculateZodiacAge(event) {
+            event.preventDefault();
+            
+            const birthDate = new Date(document.getElementById('zodiac-birth-date').value);
+            
+            if (!birthDate) {
+                alert('Please enter your birth date');
+                return;
+            }
+            
+            // Calculate current age
+            const today = new Date();
+            let age = today.getFullYear() - birthDate.getFullYear();
+            const monthDiff = today.getMonth() - birthDate.getMonth();
+            
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+            
+            // Western Zodiac Signs
+            const westernSigns = [
+                { name: 'Capricorn ♑', element: 'Earth', quality: 'Cardinal', start: [12, 22], end: [1, 19] },
+                { name: 'Aquarius ♒', element: 'Air', quality: 'Fixed', start: [1, 20], end: [2, 18] },
+                { name: 'Pisces ♓', element: 'Water', quality: 'Mutable', start: [2, 19], end: [3, 20] },
+                { name: 'Aries ♈', element: 'Fire', quality: 'Cardinal', start: [3, 21], end: [4, 19] },
+                { name: 'Taurus ♉', element: 'Earth', quality: 'Fixed', start: [4, 20], end: [5, 20] },
+                { name: 'Gemini ♊', element: 'Air', quality: 'Mutable', start: [5, 21], end: [6, 20] },
+                { name: 'Cancer ♋', element: 'Water', quality: 'Cardinal', start: [6, 21], end: [7, 22] },
+                { name: 'Leo ♌', element: 'Fire', quality: 'Fixed', start: [7, 23], end: [8, 22] },
+                { name: 'Virgo ♍', element: 'Earth', quality: 'Mutable', start: [8, 23], end: [9, 22] },
+                { name: 'Libra ♎', element: 'Air', quality: 'Cardinal', start: [9, 23], end: [10, 22] },
+                { name: 'Scorpio ♏', element: 'Water', quality: 'Fixed', start: [10, 23], end: [11, 21] },
+                { name: 'Sagittarius ♐', element: 'Fire', quality: 'Mutable', start: [11, 22], end: [12, 21] }
+            ];
+            
+            // Find Western zodiac sign
+            const month = birthDate.getMonth() + 1;
+            const day = birthDate.getDate();
+            let westernSign = westernSigns.find(sign => {
+                if (sign.start[0] === sign.end[0]) {
+                    return month === sign.start[0] && day >= sign.start[1] && day <= sign.end[1];
+                } else {
+                    return (month === sign.start[0] && day >= sign.start[1]) || 
+                           (month === sign.end[0] && day <= sign.end[1]);
+                }
+            }) || westernSigns[0];
+            
+            // Chinese Zodiac
+            const chineseAnimals = [
+                'Rat 🐭', 'Ox 🐂', 'Tiger 🐅', 'Rabbit 🐰', 'Dragon 🐉', 'Snake 🐍',
+                'Horse 🐴', 'Goat 🐐', 'Monkey 🐵', 'Rooster 🐓', 'Dog 🐕', 'Pig 🐷'
+            ];
+            const chineseElements = ['Metal', 'Water', 'Wood', 'Fire', 'Earth'];
+            
+            const chineseYear = (birthDate.getFullYear() - 4) % 12;
+            const chineseElement = chineseElements[Math.floor((birthDate.getFullYear() - 4) % 10 / 2)];
+            const cycleYear = ((birthDate.getFullYear() - 4) % 60) + 1;
+            
+            // Update display
+            document.getElementById('zodiac-main-age').textContent = `${age} Years Old`;
+            document.getElementById('zodiac-birth-info').textContent = `Born ${birthDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}`;
+            document.getElementById('zodiac-sun-sign').textContent = westernSign.name;
+            document.getElementById('zodiac-element').textContent = westernSign.element;
+            document.getElementById('zodiac-quality').textContent = westernSign.quality;
+            document.getElementById('zodiac-animal').textContent = chineseAnimals[chineseYear];
+            document.getElementById('zodiac-chinese-element').textContent = chineseElement;
+            document.getElementById('zodiac-cycle').textContent = `${cycleYear} of 60`;
+            
+            // Show results
+            const resultsDiv = document.getElementById('zodiac-results');
+            resultsDiv.classList.remove('hidden');
+            resultsDiv.classList.add('celebration-animation');
+            
+            // Save to history
+            saveToHistory('Zodiac Age', `${age} years old → ${westernSign.name.split(' ')[0]} & ${chineseAnimals[chineseYear].split(' ')[0]}`);
+            
+            setTimeout(() => {
+                resultsDiv.classList.remove('celebration-animation');
+            }, 400);
+        }
+
+        // Planetary Age Calculator
+        function calculatePlanetaryAge(event) {
+            event.preventDefault();
+            
+            const birthDate = new Date(document.getElementById('planetary-birth-date').value);
+            
+            if (!birthDate) {
+                alert('Please enter your birth date');
+                return;
+            }
+            
+            // Calculate Earth age in days
+            const today = new Date();
+            const earthDays = Math.floor((today - birthDate) / (1000 * 60 * 60 * 24));
+            const earthAge = earthDays / 365.25;
+            
+            // Planetary year lengths in Earth days
+            const planetaryYears = {
+                mercury: 88,
+                venus: 225,
+                mars: 687,
+                jupiter: 4333, // ~12 Earth years
+                saturn: 10759, // ~29 Earth years
+                uranus: 30687, // ~84 Earth years
+                neptune: 60190, // ~165 Earth years
+                pluto: 90560 // ~248 Earth years
+            };
+            
+            // Calculate ages on each planet
+            const ages = {};
+            for (const [planet, yearLength] of Object.entries(planetaryYears)) {
+                ages[planet] = (earthDays / yearLength).toFixed(1);
+            }
+            
+            // Update display
+            document.getElementById('planetary-earth-age').textContent = `${Math.floor(earthAge)} years old on Earth`;
+            document.getElementById('mercury-age').textContent = ages.mercury;
+            document.getElementById('venus-age').textContent = ages.venus;
+            document.getElementById('mars-age').textContent = ages.mars;
+            document.getElementById('jupiter-age').textContent = ages.jupiter;
+            document.getElementById('saturn-age').textContent = ages.saturn;
+            document.getElementById('uranus-age').textContent = ages.uranus;
+            document.getElementById('neptune-age').textContent = ages.neptune;
+            document.getElementById('pluto-age').textContent = ages.pluto;
+            
+            // Show results
+            const resultsDiv = document.getElementById('planetary-results');
+            resultsDiv.classList.remove('hidden');
+            resultsDiv.classList.add('celebration-animation');
+            
+            // Save to history
+            saveToHistory('Planetary Age', `${Math.floor(earthAge)} years on Earth → ${ages.jupiter} years on Jupiter`);
+            
+            setTimeout(() => {
+                resultsDiv.classList.remove('celebration-animation');
+            }, 400);
+        }
+
+        // History management
+        function saveToHistory(type, description) {
+            const history = JSON.parse(localStorage.getItem('calculationHistory') || '[]');
+            const newEntry = {
+                type: type,
+                description: description,
+                timestamp: new Date().toISOString()
+            };
+            
+            history.unshift(newEntry);
+            if (history.length > 10) history.pop(); // Keep only last 10
+            
+            localStorage.setItem('calculationHistory', JSON.stringify(history));
+            updateHistoryDisplay();
+        }
+
+        function updateHistoryDisplay() {
+            const history = JSON.parse(localStorage.getItem('calculationHistory') || '[]');
+            const historyContainer = document.getElementById('calculation-history');
+            
+            if (history.length === 0) {
+                historyContainer.innerHTML = `
+                    <div class="text-center py-8">
+                        <div class="text-text-tertiary mb-4">
+                            <svg class="w-12 h-12 mx-auto mb-2 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                            </svg>
+                        </div>
+                        <p class="text-text-secondary">Start calculating to see your history here</p>
+                        <button class="btn-secondary mt-4" onclick="clearHistory()">Clear History</button>
+                    </div>
+                `;
+                return;
+            }
+            
+            const historyHTML = history.map(entry => {
+                const timeAgo = getTimeAgo(new Date(entry.timestamp));
+                const iconClass = getIconClass(entry.type);
+                
+                return `
+                    <div class="card p-4 flex items-center justify-between">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 ${iconClass.bg} rounded-full flex items-center justify-center mr-4">
+                                ${iconClass.svg}
+                            </div>
+                            <div>
+                                <div class="font-medium text-text-primary">${entry.type}</div>
+                                <div class="text-sm text-text-secondary">${entry.description}</div>
+                            </div>
+                        </div>
+                        <div class="text-sm text-text-tertiary">${timeAgo}</div>
+                    </div>
+                `;
+            }).join('');
+            
+            historyContainer.innerHTML = historyHTML + `
+                <div class="text-center mt-6">
+                    <button class="btn-secondary" onclick="clearHistory()">Clear History</button>
+                </div>
+            `;
+        }
+
+        function getIconClass(type) {
+            const icons = {
+                'Traditional Age': {
+                    bg: 'bg-primary-100',
+                    svg: '<svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>'
+                },
+                'Reverse Age': {
+                    bg: 'bg-accent-100',
+                    svg: '<svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>'
+                },
+                'Age Difference': {
+                    bg: 'bg-secondary-100',
+                    svg: '<svg class="w-5 h-5 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>'
+                },
+                'Life Expectancy': {
+                    bg: 'bg-success-100',
+                    svg: '<svg class="w-5 h-5 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>'
+                },
+                'Zodiac Age': {
+                    bg: 'bg-accent-100',
+                    svg: '<svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>'
+                },
+                'Planetary Age': {
+                    bg: 'bg-primary-100',
+                    svg: '<svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>'
+                }
+            };
+            
+            return icons[type] || icons['Traditional Age'];
+        }
+
+        function getTimeAgo(date) {
+            const now = new Date();
+            const diffInMs = now - date;
+            const diffInHours = Math.floor(diffInMs / (1000 * 60 * 60));
+            const diffInDays = Math.floor(diffInHours / 24);
+            
+            if (diffInHours < 1) return 'Just now';
+            if (diffInHours < 24) return `${diffInHours} hour${diffInHours > 1 ? 's' : ''} ago`;
+            if (diffInDays < 7) return `${diffInDays} day${diffInDays > 1 ? 's' : ''} ago`;
+            return date.toLocaleDateString();
+        }
+
+        function clearHistory() {
+            localStorage.removeItem('calculationHistory');
+            updateHistoryDisplay();
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set current date as default for various inputs
+            const today = new Date().toISOString().split('T')[0];
+            const dateInputs = ['trad-calc-date', 'reverse-ref-date'];
+            dateInputs.forEach(id => {
+                const input = document.getElementById(id);
+                if (input) input.value = today;
+            });
+            
+            // Load calculation history
+            updateHistoryDisplay();
+        });
+    </script>
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+</html>
